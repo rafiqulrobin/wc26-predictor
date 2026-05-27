@@ -554,23 +554,155 @@ footer p{margin-bottom:6px}
         <button class="filter-btn" onclick="filterMatches('knockout',this)">Knockout</button>
         <button class="filter-btn" onclick="filterMatches('final',this)">Final</button>
       </div>
-      <div class="match-list">
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 11</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇲🇽 Mexico vs South Africa 🇿🇦</div><div class="match-venue">Estadio Azteca · Mexico City</div></div><div class="match-stage-badge">Group A</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 12</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇺🇸 USA vs Paraguay 🇵🇾</div><div class="match-venue">SoFi Stadium · Los Angeles</div></div><div class="match-stage-badge">Group D</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇧🇷 Brazil vs Morocco 🇲🇦</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Group C</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>9:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland vs Haiti 🇭🇹</div><div class="match-venue">Gillette Stadium · Boston</div></div><div class="match-stage-badge">Group C</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 14</strong>1:00 PM ET</div><div><div class="match-teams-txt">🇩🇪 Germany vs Curaçao 🇨🇼</div><div class="match-venue">NRG Stadium · Houston</div></div><div class="match-stage-badge">Group E</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 15</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇪🇸 Spain vs Cape Verde 🇨🇻</div><div class="match-venue">Mercedes-Benz Stadium · Atlanta</div></div><div class="match-stage-badge">Group H</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇫🇷 France vs Senegal 🇸🇳</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Group I</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇦🇷 Argentina vs Algeria 🇩🇿</div><div class="match-venue">Arrowhead · Kansas City</div></div><div class="match-stage-badge">Group J</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 17</strong>4:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Croatia 🇭🇷</div><div class="match-venue">AT&T Stadium · Dallas</div></div><div class="match-stage-badge">Group L</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jun 28</strong>TBD</div><div><div class="match-teams-txt">Round of 32 begins</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 32</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 4</strong>TBD</div><div><div class="match-teams-txt">Round of 16 begins</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 16</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 9</strong>TBD</div><div><div class="match-teams-txt">Quarterfinals begin</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Quarterfinal</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 14</strong>TBD</div><div><div class="match-teams-txt">Semifinal 1</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Semifinal</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 15</strong>TBD</div><div><div class="match-teams-txt">Semifinal 2</div><div class="match-venue">AT&T Stadium · Dallas</div></div><div class="match-stage-badge">Semifinal</div></div>
-        <div class="match-item final-match" data-stage="final"><div class="match-date"><strong>Jul 19</strong>3:00 PM ET</div><div><div class="match-teams-txt" style="font-size:17px">🏆 World Cup Final</div><div class="match-venue">MetLife Stadium · East Rutherford, NJ</div></div><div class="match-stage-badge" style="border-color:rgba(240,192,64,0.3);color:var(--gold)">Final</div></div>
-      </div>
+<!-- 
+COPY THIS ENTIRE BLOCK AND REPLACE THE EXISTING match-list div IN index.html
+Search for: <div class="match-list">
+Replace everything until the closing </div> with this block
+-->
+
+<div class="match-list">
+
+<!-- ===== GROUP STAGE ===== -->
+
+<!-- Jun 11 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 11</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇲🇽 Mexico vs South Africa 🇿🇦</div><div class="match-venue">Estadio Azteca · Mexico City · Group A</div></div><div class="match-stage-badge">Group A</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 11</strong>10:00 PM ET</div><div><div class="match-teams-txt">🇰🇷 South Korea vs Czech Republic 🇨🇿</div><div class="match-venue">Estadio Akron · Guadalajara · Group A</div></div><div class="match-stage-badge">Group A</div></div>
+
+<!-- Jun 12 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 12</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇨🇦 Canada vs Bosnia & Herzegovina 🇧🇦</div><div class="match-venue">BMO Field · Toronto · Group B</div></div><div class="match-stage-badge">Group B</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 12</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇺🇸 USA vs Paraguay 🇵🇾</div><div class="match-venue">SoFi Stadium · Los Angeles · Group D</div></div><div class="match-stage-badge">Group D</div></div>
+
+<!-- Jun 13 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇧🇷 Brazil vs Morocco 🇲🇦</div><div class="match-venue">Gillette Stadium · Boston · Group C</div></div><div class="match-stage-badge">Group C</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇭🇹 Haiti vs Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div class="match-venue">MetLife Stadium · New York · Group C</div></div><div class="match-stage-badge">Group C</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇦🇺 Australia vs Türkiye 🇹🇷</div><div class="match-venue">BC Place · Vancouver · Group D</div></div><div class="match-stage-badge">Group D</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇶🇦 Qatar vs Switzerland 🇨🇭</div><div class="match-venue">Levi's Stadium · San Francisco · Group B</div></div><div class="match-stage-badge">Group B</div></div>
+
+<!-- Jun 14 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 14</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇩🇪 Germany vs Curaçao 🇨🇼</div><div class="match-venue">Lincoln Financial Field · Philadelphia · Group E</div></div><div class="match-stage-badge">Group E</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 14</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇨🇮 Ivory Coast vs Ecuador 🇪🇨</div><div class="match-venue">NRG Stadium · Houston · Group E</div></div><div class="match-stage-badge">Group E</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 14</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇳🇱 Netherlands vs Japan 🇯🇵</div><div class="match-venue">AT&T Stadium · Dallas · Group F</div></div><div class="match-stage-badge">Group F</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 14</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇸🇪 Sweden vs Tunisia 🇹🇳</div><div class="match-venue">Estadio BBVA · Monterrey · Group F</div></div><div class="match-stage-badge">Group F</div></div>
+
+<!-- Jun 15 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 15</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇪🇸 Spain vs Cape Verde 🇨🇻</div><div class="match-venue">Hard Rock Stadium · Miami · Group H</div></div><div class="match-stage-badge">Group H</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 15</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇸🇦 Saudi Arabia vs Uruguay 🇺🇾</div><div class="match-venue">Mercedes-Benz Stadium · Atlanta · Group H</div></div><div class="match-stage-badge">Group H</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 15</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇧🇪 Belgium vs Egypt 🇪🇬</div><div class="match-venue">SoFi Stadium · Los Angeles · Group G</div></div><div class="match-stage-badge">Group G</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 15</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇮🇷 Iran vs New Zealand 🇳🇿</div><div class="match-venue">Lumen Field · Seattle · Group G</div></div><div class="match-stage-badge">Group G</div></div>
+
+<!-- Jun 16 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇫🇷 France vs Senegal 🇸🇳</div><div class="match-venue">MetLife Stadium · New York · Group I</div></div><div class="match-stage-badge">Group I</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇮🇶 Iraq vs Norway 🇳🇴</div><div class="match-venue">Empower Field · Denver · Group I</div></div><div class="match-stage-badge">Group I</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇦🇷 Argentina vs Algeria 🇩🇿</div><div class="match-venue">Arrowhead Stadium · Kansas City · Group J</div></div><div class="match-stage-badge">Group J</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇦🇹 Austria vs Jordan 🇯🇴</div><div class="match-venue">Rose Bowl · Los Angeles · Group J</div></div><div class="match-stage-badge">Group J</div></div>
+
+<!-- Jun 17 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 17</strong>12:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Croatia 🇭🇷</div><div class="match-venue">AT&T Stadium · Dallas · Group L</div></div><div class="match-stage-badge">Group L</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 17</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇬🇭 Ghana vs Panama 🇵🇦</div><div class="match-venue">Estadio Akron · Guadalajara · Group L</div></div><div class="match-stage-badge">Group L</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 17</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇵🇹 Portugal vs DR Congo 🇨🇩</div><div class="match-venue">Levi's Stadium · San Francisco · Group K</div></div><div class="match-stage-badge">Group K</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 17</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇺🇿 Uzbekistan vs Colombia 🇨🇴</div><div class="match-venue">Arrowhead Stadium · Kansas City · Group K</div></div><div class="match-stage-badge">Group K</div></div>
+
+<!-- Jun 18 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 18</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇲🇽 Mexico vs Czech Republic 🇨🇿</div><div class="match-venue">Estadio Azteca · Mexico City · Group A</div></div><div class="match-stage-badge">Group A</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 18</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇿🇦 South Africa vs South Korea 🇰🇷</div><div class="match-venue">NRG Stadium · Houston · Group A</div></div><div class="match-stage-badge">Group A</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 18</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇧🇦 Bosnia & Herzegovina vs Qatar 🇶🇦</div><div class="match-venue">BMO Field · Toronto · Group B</div></div><div class="match-stage-badge">Group B</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 18</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇨🇦 Canada vs Switzerland 🇨🇭</div><div class="match-venue">BC Place · Vancouver · Group B</div></div><div class="match-stage-badge">Group B</div></div>
+
+<!-- Jun 19 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 19</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇲🇦 Morocco vs Haiti 🇭🇹</div><div class="match-venue">MetLife Stadium · New York · Group C</div></div><div class="match-stage-badge">Group C</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 19</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇺🇸 USA vs Australia 🇦🇺</div><div class="match-venue">Lumen Field · Seattle · Group D</div></div><div class="match-stage-badge">Group D</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 19</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇧🇷 Brazil vs Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div class="match-venue">Gillette Stadium · Boston · Group C</div></div><div class="match-stage-badge">Group C</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 19</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇵🇾 Paraguay vs Türkiye 🇹🇷</div><div class="match-venue">SoFi Stadium · Los Angeles · Group D</div></div><div class="match-stage-badge">Group D</div></div>
+
+<!-- Jun 20 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 20</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇩🇪 Germany vs Ivory Coast 🇨🇮</div><div class="match-venue">Lincoln Financial Field · Philadelphia · Group E</div></div><div class="match-stage-badge">Group E</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 20</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇪🇨 Ecuador vs Curaçao 🇨🇼</div><div class="match-venue">NRG Stadium · Houston · Group E</div></div><div class="match-stage-badge">Group E</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 20</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇳🇱 Netherlands vs Sweden 🇸🇪</div><div class="match-venue">AT&T Stadium · Dallas · Group F</div></div><div class="match-stage-badge">Group F</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 20</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇯🇵 Japan vs Tunisia 🇹🇳</div><div class="match-venue">Estadio BBVA · Monterrey · Group F</div></div><div class="match-stage-badge">Group F</div></div>
+
+<!-- Jun 21 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 21</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇪🇸 Spain vs Saudi Arabia 🇸🇦</div><div class="match-venue">Hard Rock Stadium · Miami · Group H</div></div><div class="match-stage-badge">Group H</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 21</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇺🇾 Uruguay vs Cape Verde 🇨🇻</div><div class="match-venue">Mercedes-Benz Stadium · Atlanta · Group H</div></div><div class="match-stage-badge">Group H</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 21</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇧🇪 Belgium vs Iran 🇮🇷</div><div class="match-venue">SoFi Stadium · Los Angeles · Group G</div></div><div class="match-stage-badge">Group G</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 21</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇪🇬 Egypt vs New Zealand 🇳🇿</div><div class="match-venue">Lumen Field · Seattle · Group G</div></div><div class="match-stage-badge">Group G</div></div>
+
+<!-- Jun 22 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 22</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇫🇷 France vs Iraq 🇮🇶</div><div class="match-venue">MetLife Stadium · New York · Group I</div></div><div class="match-stage-badge">Group I</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 22</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇸🇳 Senegal vs Norway 🇳🇴</div><div class="match-venue">Empower Field · Denver · Group I</div></div><div class="match-stage-badge">Group I</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 22</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇦🇷 Argentina vs Austria 🇦🇹</div><div class="match-venue">Arrowhead Stadium · Kansas City · Group J</div></div><div class="match-stage-badge">Group J</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 22</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇩🇿 Algeria vs Jordan 🇯🇴</div><div class="match-venue">Rose Bowl · Los Angeles · Group J</div></div><div class="match-stage-badge">Group J</div></div>
+
+<!-- Jun 23 -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 23</strong>12:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Ghana 🇬🇭</div><div class="match-venue">AT&T Stadium · Dallas · Group L</div></div><div class="match-stage-badge">Group L</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 23</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇭🇷 Croatia vs Panama 🇵🇦</div><div class="match-venue">Estadio Akron · Guadalajara · Group L</div></div><div class="match-stage-badge">Group L</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 23</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇵🇹 Portugal vs Uzbekistan 🇺🇿</div><div class="match-venue">Levi's Stadium · San Francisco · Group K</div></div><div class="match-stage-badge">Group K</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 23</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇨🇩 DR Congo vs Colombia 🇨🇴</div><div class="match-venue">Arrowhead Stadium · Kansas City · Group K</div></div><div class="match-stage-badge">Group K</div></div>
+
+<!-- Jun 24 (Matchday 3 Group A & B) -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 24</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇲🇽 Mexico vs South Korea 🇰🇷</div><div class="match-venue">Estadio Azteca · Mexico City · Group A</div></div><div class="match-stage-badge">Group A</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 24</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇿🇦 South Africa vs Czech Republic 🇨🇿</div><div class="match-venue">NRG Stadium · Houston · Group A</div></div><div class="match-stage-badge">Group A</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 24</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇨🇦 Canada vs Qatar 🇶🇦</div><div class="match-venue">BMO Field · Toronto · Group B</div></div><div class="match-stage-badge">Group B</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 24</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇧🇦 Bosnia & Herzegovina vs Switzerland 🇨🇭</div><div class="match-venue">BC Place · Vancouver · Group B</div></div><div class="match-stage-badge">Group B</div></div>
+
+<!-- Jun 25 (Matchday 3 Group C & D) -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 25</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇧🇷 Brazil vs Haiti 🇭🇹</div><div class="match-venue">Gillette Stadium · Boston · Group C</div></div><div class="match-stage-badge">Group C</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 25</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇲🇦 Morocco vs Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div class="match-venue">MetLife Stadium · New York · Group C</div></div><div class="match-stage-badge">Group C</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 25</strong>10:00 PM ET</div><div><div class="match-teams-txt">🇹🇷 Türkiye vs USA 🇺🇸</div><div class="match-venue">SoFi Stadium · Los Angeles · Group D</div></div><div class="match-stage-badge">Group D</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 25</strong>10:00 PM ET</div><div><div class="match-teams-txt">🇦🇺 Australia vs Paraguay 🇵🇾</div><div class="match-venue">Lumen Field · Seattle · Group D</div></div><div class="match-stage-badge">Group D</div></div>
+
+<!-- Jun 26 (Matchday 3 Group E & F) -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 26</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇩🇪 Germany vs Ecuador 🇪🇨</div><div class="match-venue">Lincoln Financial Field · Philadelphia · Group E</div></div><div class="match-stage-badge">Group E</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 26</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇨🇮 Ivory Coast vs Curaçao 🇨🇼</div><div class="match-venue">NRG Stadium · Houston · Group E</div></div><div class="match-stage-badge">Group E</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 26</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇳🇱 Netherlands vs Tunisia 🇹🇳</div><div class="match-venue">AT&T Stadium · Dallas · Group F</div></div><div class="match-stage-badge">Group F</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 26</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇯🇵 Japan vs Sweden 🇸🇪</div><div class="match-venue">Estadio BBVA · Monterrey · Group F</div></div><div class="match-stage-badge">Group F</div></div>
+
+<!-- Jun 27 (Matchday 3 Group G, H, I, J, K, L) -->
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇧🇪 Belgium vs New Zealand 🇳🇿</div><div class="match-venue">SoFi Stadium · Los Angeles · Group G</div></div><div class="match-stage-badge">Group G</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇮🇷 Iran vs Egypt 🇪🇬</div><div class="match-venue">Lumen Field · Seattle · Group G</div></div><div class="match-stage-badge">Group G</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇪🇸 Spain vs Uruguay 🇺🇾</div><div class="match-venue">Hard Rock Stadium · Miami · Group H</div></div><div class="match-stage-badge">Group H</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇸🇦 Saudi Arabia vs Cape Verde 🇨🇻</div><div class="match-venue">Mercedes-Benz Stadium · Atlanta · Group H</div></div><div class="match-stage-badge">Group H</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇫🇷 France vs Norway 🇳🇴</div><div class="match-venue">MetLife Stadium · New York · Group I</div></div><div class="match-stage-badge">Group I</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇸🇳 Senegal vs Iraq 🇮🇶</div><div class="match-venue">Empower Field · Denver · Group I</div></div><div class="match-stage-badge">Group I</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇦🇷 Argentina vs Jordan 🇯🇴</div><div class="match-venue">Arrowhead Stadium · Kansas City · Group J</div></div><div class="match-stage-badge">Group J</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 27</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇩🇿 Algeria vs Austria 🇦🇹</div><div class="match-venue">Rose Bowl · Los Angeles · Group J</div></div><div class="match-stage-badge">Group J</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 28</strong>12:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Panama 🇵🇦</div><div class="match-venue">AT&T Stadium · Dallas · Group L</div></div><div class="match-stage-badge">Group L</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 28</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇭🇷 Croatia vs Ghana 🇬🇭</div><div class="match-venue">Estadio Akron · Guadalajara · Group L</div></div><div class="match-stage-badge">Group L</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 28</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇵🇹 Portugal vs Colombia 🇨🇴</div><div class="match-venue">Levi's Stadium · San Francisco · Group K</div></div><div class="match-stage-badge">Group K</div></div>
+<div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 28</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇨🇩 DR Congo vs Uzbekistan 🇺🇿</div><div class="match-venue">Arrowhead Stadium · Kansas City · Group K</div></div><div class="match-stage-badge">Group K</div></div>
+
+<!-- ===== ROUND OF 32 ===== -->
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 1</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 1</div><div class="match-venue">Group A Winners vs Best 3rd Place</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 1</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 2</div><div class="match-venue">Group B Winners vs Best 3rd Place</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 2</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 3</div><div class="match-venue">Group C Winners vs Best 3rd Place</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 2</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 4</div><div class="match-venue">Group D Winners vs Best 3rd Place</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 3</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 5</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 3</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 6</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 4</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 7</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 32</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 4</strong>TBD</div><div><div class="match-teams-txt">Round of 32 — Match 8</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 32</div></div>
+
+<!-- ===== ROUND OF 16 ===== -->
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 7</strong>TBD</div><div><div class="match-teams-txt">Round of 16 — Match 1</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 16</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 7</strong>TBD</div><div><div class="match-teams-txt">Round of 16 — Match 2</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 16</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 8</strong>TBD</div><div><div class="match-teams-txt">Round of 16 — Match 3</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 16</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 8</strong>TBD</div><div><div class="match-teams-txt">Round of 16 — Match 4</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 16</div></div>
+
+<!-- ===== QUARTERFINALS ===== -->
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 10</strong>TBD</div><div><div class="match-teams-txt">Quarterfinal 1</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Quarterfinal</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 10</strong>TBD</div><div><div class="match-teams-txt">Quarterfinal 2</div><div class="match-venue">AT&T Stadium · Dallas</div></div><div class="match-stage-badge">Quarterfinal</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 11</strong>TBD</div><div><div class="match-teams-txt">Quarterfinal 3</div><div class="match-venue">Hard Rock Stadium · Miami</div></div><div class="match-stage-badge">Quarterfinal</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 11</strong>TBD</div><div><div class="match-teams-txt">Quarterfinal 4</div><div class="match-venue">SoFi Stadium · Los Angeles</div></div><div class="match-stage-badge">Quarterfinal</div></div>
+
+<!-- ===== SEMIFINALS ===== -->
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 14</strong>TBD</div><div><div class="match-teams-txt">Semifinal 1</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Semifinal</div></div>
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 15</strong>TBD</div><div><div class="match-teams-txt">Semifinal 2</div><div class="match-venue">AT&T Stadium · Dallas</div></div><div class="match-stage-badge">Semifinal</div></div>
+
+<!-- ===== THIRD PLACE ===== -->
+<div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 18</strong>TBD</div><div><div class="match-teams-txt">Third Place Match</div><div class="match-venue">Hard Rock Stadium · Miami</div></div><div class="match-stage-badge">3rd Place</div></div>
+
+<!-- ===== FINAL ===== -->
+<div class="match-item final-match" data-stage="final"><div class="match-date"><strong>Jul 19</strong>3:00 PM ET</div><div><div class="match-teams-txt" style="font-size:17px">🏆 World Cup Final</div><div class="match-venue">MetLife Stadium · East Rutherford, New Jersey</div></div><div class="match-stage-badge" style="border-color:rgba(240,192,64,0.3);color:var(--gold)">Final</div></div>
+
+</div>
     </div>
   </div>
 </div>
