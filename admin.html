@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiveWC26 Admin Panel</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07080d;color:#eeecea;font-family:'DM Sans',Arial,sans-serif;font-size:16px;min-height:100vh;padding:32px 24px}
+.container{max-width:600px;margin:0 auto}
+h1{font-size:28px;font-weight:900;margin-bottom:4px}
+h1 span{color:#f0c040}
+.subtitle{color:#7a7a8a;font-size:14px;margin-bottom:32px}
+.card{background:#0f1018;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;margin-bottom:20px}
+.card h2{font-size:18px;font-weight:600;margin-bottom:20px;color:#f0c040}
+label{display:block;font-size:12px;color:#7a7a8a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;margin-top:14px}
+input,select,textarea{width:100%;background:#171820;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;color:#eeecea;font-family:inherit;font-size:14px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:rgba(240,192,64,0.4)}
+select option{background:#171820}
+.score-row{display:grid;grid-template-columns:1fr 40px 1fr;gap:12px;align-items:center;margin-top:14px}
+.score-vs{text-align:center;font-size:18px;font-weight:700;color:#444455}
+.score-input{font-size:24px;font-weight:700;text-align:center;color:#f0c040}
+.btn{width:100%;padding:14px;background:#f0c040;color:#07080d;border:none;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;margin-top:20px;transition:opacity 0.2s}
+.btn:hover{opacity:0.85}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.result-box{margin-top:16px;padding:16px;border-radius:10px;font-size:14px;display:none}
+.result-box.success{background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.2);color:#3ecf8e}
+.result-box.error{background:rgba(240,96,96,0.08);border:1px solid rgba(240,96,96,0.2);color:#f09595}
+.auth-card{background:#0f1018;border:1px solid rgba(240,192,64,0.2);border-radius:16px;padding:28px;margin-bottom:20px}
+.auth-card h2{color:#f0c040;margin-bottom:16px}
+#main-panel{display:none}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>LiveWC26 <span>Admin</span></h1>
+  <p class="subtitle">Enter match results → auto calculate points → send emails to all subscribers</p>
+
+  <!-- Auth -->
+  <div class="auth-card" id="auth-card">
+    <h2>🔐 Admin Login</h2>
+    <label>Admin Password</label>
+    <input type="password" id="admin-password" placeholder="Enter admin password">
+    <button class="btn" onclick="authenticate()">Login →</button>
+  </div>
+
+  <!-- Main Panel -->
+  <div id="main-panel">
+
+    <div class="card">
+      <h2>⚽ Enter Match Result</h2>
+
+      <label>Select Match</label>
+      <select id="match-select" onchange="fillMatchDetails()">
+        <option value="">-- Select a match --</option>
+        <option value="MEX_RSA_jun11" data-t1="Mexico" data-f1="🇲🇽" data-t2="South Africa" data-f2="🇿🇦">Jun 11 · Mexico vs South Africa</option>
+        <option value="KOR_CZE_jun11" data-t1="South Korea" data-f1="🇰🇷" data-t2="Czech Republic" data-f2="🇨🇿">Jun 11 · South Korea vs Czech Republic</option>
+        <option value="CAN_BIH_jun12" data-t1="Canada" data-f1="🇨🇦" data-t2="Bosnia & Herzegovina" data-f2="🇧🇦">Jun 12 · Canada vs Bosnia & Herzegovina</option>
+        <option value="USA_PAR_jun12" data-t1="USA" data-f1="🇺🇸" data-t2="Paraguay" data-f2="🇵🇾">Jun 12 · USA vs Paraguay</option>
+        <option value="BRA_MAR_jun13" data-t1="Brazil" data-f1="🇧🇷" data-t2="Morocco" data-f2="🇲🇦">Jun 13 · Brazil vs Morocco</option>
+        <option value="HAI_SCO_jun13" data-t1="Haiti" data-f1="🇭🇹" data-t2="Scotland" data-f2="🏴󠁧󠁢󠁳󠁣󠁴󠁿">Jun 13 · Haiti vs Scotland</option>
+        <option value="AUS_TUR_jun13" data-t1="Australia" data-f1="🇦🇺" data-t2="Türkiye" data-f2="🇹🇷">Jun 13 · Australia vs Türkiye</option>
+        <option value="QAT_SUI_jun13" data-t1="Qatar" data-f1="🇶🇦" data-t2="Switzerland" data-f2="🇨🇭">Jun 13 · Qatar vs Switzerland</option>
+        <option value="GER_CUR_jun14" data-t1="Germany" data-f1="🇩🇪" data-t2="Curaçao" data-f2="🇨🇼">Jun 14 · Germany vs Curaçao</option>
+        <option value="CIV_ECU_jun14" data-t1="Ivory Coast" data-f1="🇨🇮" data-t2="Ecuador" data-f2="🇪🇨">Jun 14 · Ivory Coast vs Ecuador</option>
+        <option value="NED_JPN_jun14" data-t1="Netherlands" data-f1="🇳🇱" data-t2="Japan" data-f2="🇯🇵">Jun 14 · Netherlands vs Japan</option>
+        <option value="SWE_TUN_jun14" data-t1="Sweden" data-f1="🇸🇪" data-t2="Tunisia" data-f2="🇹🇳">Jun 14 · Sweden vs Tunisia</option>
+        <option value="ESP_CPV_jun15" data-t1="Spain" data-f1="🇪🇸" data-t2="Cape Verde" data-f2="🇨🇻">Jun 15 · Spain vs Cape Verde</option>
+        <option value="KSA_URU_jun15" data-t1="Saudi Arabia" data-f1="🇸🇦" data-t2="Uruguay" data-f2="🇺🇾">Jun 15 · Saudi Arabia vs Uruguay</option>
+        <option value="BEL_EGY_jun15" data-t1="Belgium" data-f1="🇧🇪" data-t2="Egypt" data-f2="🇪🇬">Jun 15 · Belgium vs Egypt</option>
+        <option value="IRN_NZL_jun15" data-t1="Iran" data-f1="🇮🇷" data-t2="New Zealand" data-f2="🇳🇿">Jun 15 · Iran vs New Zealand</option>
+        <option value="FRA_SEN_jun16" data-t1="France" data-f1="🇫🇷" data-t2="Senegal" data-f2="🇸🇳">Jun 16 · France vs Senegal</option>
+        <option value="IRQ_NOR_jun16" data-t1="Iraq" data-f1="🇮🇶" data-t2="Norway" data-f2="🇳🇴">Jun 16 · Iraq vs Norway</option>
+        <option value="ARG_ALG_jun16" data-t1="Argentina" data-f1="🇦🇷" data-t2="Algeria" data-f2="🇩🇿">Jun 16 · Argentina vs Algeria</option>
+        <option value="AUT_JOR_jun16" data-t1="Austria" data-f1="🇦🇹" data-t2="Jordan" data-f2="🇯🇴">Jun 16 · Austria vs Jordan</option>
+        <option value="ENG_CRO_jun17" data-t1="England" data-f1="🏴󠁧󠁢󠁥󠁮󠁧󠁿" data-t2="Croatia" data-f2="🇭🇷">Jun 17 · England vs Croatia</option>
+        <option value="GHA_PAN_jun17" data-t1="Ghana" data-f1="🇬🇭" data-t2="Panama" data-f2="🇵🇦">Jun 17 · Ghana vs Panama</option>
+        <option value="POR_COD_jun17" data-t1="Portugal" data-f1="🇵🇹" data-t2="DR Congo" data-f2="🇨🇩">Jun 17 · Portugal vs DR Congo</option>
+        <option value="UZB_COL_jun17" data-t1="Uzbekistan" data-f1="🇺🇿" data-t2="Colombia" data-f2="🇨🇴">Jun 17 · Uzbekistan vs Colombia</option>
+      </select>
+
+      <div id="match-details" style="display:none">
+        <div class="score-row">
+          <div>
+            <div style="font-size:24px;text-align:center" id="flag1"></div>
+            <div style="text-align:center;font-size:13px;margin-top:4px;color:#7a7a8a" id="tname1"></div>
+            <input type="number" class="score-input" id="score1" value="0" min="0" max="20">
+          </div>
+          <div class="score-vs">—</div>
+          <div>
+            <div style="font-size:24px;text-align:center" id="flag2"></div>
+            <div style="text-align:center;font-size:13px;margin-top:4px;color:#7a7a8a" id="tname2"></div>
+            <input type="number" class="score-input" id="score2" value="0" min="0" max="20">
+          </div>
+        </div>
+
+        <label>AI Match Analysis (optional — will be included in email)</label>
+        <textarea id="analysis" rows="3" placeholder="Write a short match summary for the email..."></textarea>
+
+        <button class="btn" id="submit-btn" onclick="submitResult()">
+          ⚡ Submit Result + Send Emails
+        </button>
+
+        <div class="result-box" id="result-box"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📊 What happens when you submit:</h2>
+      <div style="display:grid;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#171820;border-radius:8px">
+          <span style="font-size:20px">1️⃣</span>
+          <div><div style="font-size:14px;font-weight:500">Points calculated</div><div style="font-size:12px;color:#7a7a8a">All predictions for this match get scored automatically</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#171820;border-radius:8px">
+          <span style="font-size:20px">2️⃣</span>
+          <div><div style="font-size:14px;font-weight:500">Leaderboard updated</div><div style="font-size:12px;color:#7a7a8a">Total points updated for each user in Supabase</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#171820;border-radius:8px">
+          <span style="font-size:20px">3️⃣</span>
+          <div><div style="font-size:14px;font-weight:500">Emails sent to all subscribers</div><div style="font-size:12px;color:#7a7a8a">Everyone gets match result + their prediction score</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let adminSecret = '';
+
+function authenticate() {
+  const pwd = document.getElementById('admin-password').value;
+  if (!pwd) { alert('Enter password'); return; }
+  adminSecret = pwd;
+  document.getElementById('auth-card').style.display = 'none';
+  document.getElementById('main-panel').style.display = 'block';
+}
+
+function fillMatchDetails() {
+  const sel = document.getElementById('match-select');
+  const opt = sel.options[sel.selectedIndex];
+  if (!opt.value) { document.getElementById('match-details').style.display = 'none'; return; }
+  document.getElementById('flag1').textContent = opt.dataset.f1;
+  document.getElementById('tname1').textContent = opt.dataset.t1;
+  document.getElementById('flag2').textContent = opt.dataset.f2;
+  document.getElementById('tname2').textContent = opt.dataset.t2;
+  document.getElementById('score1').value = 0;
+  document.getElementById('score2').value = 0;
+  document.getElementById('analysis').value = '';
+  document.getElementById('match-details').style.display = 'block';
+  document.getElementById('result-box').style.display = 'none';
+}
+
+async function submitResult() {
+  const sel = document.getElementById('match-select');
+  const opt = sel.options[sel.selectedIndex];
+  if (!opt.value) { alert('Select a match'); return; }
+
+  const score1 = parseInt(document.getElementById('score1').value);
+  const score2 = parseInt(document.getElementById('score2').value);
+  const analysis = document.getElementById('analysis').value;
+  const btn = document.getElementById('submit-btn');
+  const box = document.getElementById('result-box');
+
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+  box.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/admin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${adminSecret}`
+      },
+      body: JSON.stringify({
+        match_id: opt.value,
+        team1: opt.dataset.t1,
+        team2: opt.dataset.t2,
+        flag1: opt.dataset.f1,
+        flag2: opt.dataset.f2,
+        score1, score2, analysis
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      box.className = 'result-box success';
+      box.innerHTML = `
+        ✅ Done!<br>
+        • ${data.predictions_updated} predictions scored<br>
+        • ${data.emails_sent} emails sent<br>
+        ${data.emails_failed > 0 ? `• ${data.emails_failed} emails failed` : ''}
+      `;
+    } else {
+      box.className = 'result-box error';
+      box.textContent = '❌ Error: ' + (data.error || 'Unknown error');
+    }
+  } catch (e) {
+    box.className = 'result-box error';
+    box.textContent = '❌ Error: ' + e.message;
+  }
+
+  box.style.display = 'block';
+  btn.disabled = false;
+  btn.textContent = '⚡ Submit Result + Send Emails';
+}
+</script>
+</body>
+</html>
