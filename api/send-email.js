@@ -130,7 +130,7 @@ export default async function handler(req, res) {
           'api-key': process.env.BREVO_API_KEY
         },
         body: JSON.stringify({
-          sender: { name: 'LiveWC26', email: 'noreply@livewc26.com' },
+          sender: { name: 'Live World Cup 26', email: 'updates@livewc26.com' },
           to: [{ email: sub.email, name: sub.username }],
           subject: `⚽ ${match.team1} ${result.score1}–${result.score2} ${match.team2} | Match Result`,
           htmlContent: emailHtml
