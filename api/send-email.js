@@ -109,7 +109,7 @@ export default async function handler(req, res) {
     <!-- VPN -->
     <div style="background:#0f1018;border:1px solid rgba(240,192,64,0.15);border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
       <p style="color:#eeecea;font-size:14px;margin:0 0 8px;">📺 Watching the World Cup? Stream every match free with VPN</p>
-      <a href="https://nordvpn.com" style="color:#f0c040;font-size:13px;text-decoration:none;">Get NordVPN — 63% off →</a>
+      <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=149238&url_id=902" style="color:#f0c040;font-size:13px;text-decoration:none;">Get NordVPN — 63% off →</a>
     </div>
 
     <!-- Footer -->
