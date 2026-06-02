@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — LiveWC26</title>
+<meta name="description" content="Contact LiveWC26 — get in touch with questions, feedback, or bug reports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#07080d;--bg2:#0f1018;--bg3:#171820;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);--text:#eeecea;--muted:#7a7a8a;--gold:#f0c040;--green:#3ecf8e;--font-d:'Bebas Neue',sans-serif;--font-b:'DM Sans',sans-serif}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.7;min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(7,8,13,0.92);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--font-d);font-size:22px;letter-spacing:0.04em;text-decoration:none;color:var(--text)}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none}
+.nav-back:hover{color:var(--text)}
+.container{max-width:720px;margin:0 auto;padding:60px 24px}
+h1{font-family:var(--font-d);font-size:56px;line-height:1;margin-bottom:8px}
+h1 span{color:var(--gold)}
+.subtitle{color:var(--muted);font-size:17px;font-weight:300;margin-bottom:48px}
+.card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:28px;margin-bottom:20px}
+h2{font-family:var(--font-d);font-size:28px;margin-bottom:12px;color:var(--gold)}
+p{color:var(--muted);font-size:15px;font-weight:300;margin-bottom:12px}
+label{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;margin-top:14px}
+input,textarea,select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-family:var(--font-b);font-size:14px;outline:none}
+input:focus,textarea:focus{border-color:rgba(240,192,64,0.4)}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+.btn{width:100%;padding:14px;background:var(--gold);color:#07080d;border:none;border-radius:12px;font-family:var(--font-d);font-size:20px;cursor:pointer;margin-top:20px;transition:opacity 0.2s;letter-spacing:0.04em}
+.btn:hover{opacity:0.85}
+.contact-options{display:grid;gap:12px;margin-top:8px}
+.contact-item{display:flex;align-items:center;gap:14px;padding:16px;background:var(--bg3);border-radius:12px;border:1px solid var(--border)}
+.contact-icon{font-size:24px;flex-shrink:0}
+.contact-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px}
+.contact-value{font-size:15px;font-weight:500}
+.contact-value a{color:var(--gold);text-decoration:none}
+.success-msg{display:none;padding:16px;background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.2);border-radius:10px;color:var(--green);font-size:14px;text-align:center;margin-top:16px}
+.success-msg.show{display:block}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--gold);text-decoration:none;margin:0 8px}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">LIVE<span>WC26</span></a>
+  <a class="nav-back" href="/">← Back to site</a>
+</nav>
+
+<div class="container">
+  <h1>Contact <span>Us</span></h1>
+  <p class="subtitle">We'd love to hear from you — questions, feedback, or bug reports welcome.</p>
+
+  <div class="card">
+    <h2>Get in Touch</h2>
+    <div class="contact-options">
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:hello@livewc26.com">hello@livewc26.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <div class="contact-label">Website</div>
+          <div class="contact-value"><a href="https://livewc26.com">livewc26.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⚡</div>
+        <div>
+          <div class="contact-label">Response Time</div>
+          <div class="contact-value">Usually within 24-48 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Send a Message</h2>
+    <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+
+    <label>Your Name</label>
+    <input type="text" id="contact-name" placeholder="John Doe">
+
+    <label>Email Address</label>
+    <input type="email" id="contact-email" placeholder="your@email.com">
+
+    <label>Subject</label>
+    <select id="contact-subject">
+      <option value="">Select a topic</option>
+      <option value="bug">Bug Report</option>
+      <option value="feedback">General Feedback</option>
+      <option value="feature">Feature Request</option>
+      <option value="business">Business Inquiry</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label>Message</label>
+    <textarea id="contact-message" rows="5" placeholder="Tell us what's on your mind..."></textarea>
+
+    <button class="btn" onclick="sendMessage()">Send Message →</button>
+    <div class="success-msg" id="contact-success">✅ Message sent! We'll get back to you within 24-48 hours.</div>
+  </div>
+
+  <div class="card">
+    <h2>Common Questions</h2>
+    <p><strong style="color:var(--text)">Is LiveWC26 free?</strong><br>Yes, completely free. No signup required for the AI predictor.</p>
+    <p><strong style="color:var(--text)">How accurate are the AI predictions?</strong><br>Predictions are for entertainment only and are generated by AI based on team statistics and history. They are not guarantees.</p>
+    <p><strong style="color:var(--text)">How do I create a private league?</strong><br>Go to the League tab, create a league, and share the code with friends.</p>
+    <p><strong style="color:var(--text)">When are match results updated?</strong><br>Match results are updated shortly after each game ends, and email notifications are sent to subscribers.</p>
+  </div>
+</div>
+
+<footer>
+  <p style="font-family:var(--font-d);font-size:18px;margin-bottom:8px">LIVE<span style="color:var(--gold)">WC26</span></p>
+  <p>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy Policy</a>
+  </p>
+  <p style="margin-top:8px">Not affiliated with FIFA · AI predictions for entertainment only</p>
+</footer>
+
+<script>
+function sendMessage() {
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+  if (!name || !email || !message) { alert('Please fill in all required fields.'); return; }
+  document.getElementById('contact-success').className = 'success-msg show';
+  document.getElementById('contact-name').value = '';
+  document.getElementById('contact-email').value = '';
+  document.getElementById('contact-message').value = '';
+}
+</script>
+</body>
+</html>
