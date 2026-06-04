@@ -7,6 +7,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LiveWC26 — Predict. Score. Watch.</title>
 <meta name="description" content="AI-powered World Cup 2026 predictions, user prediction game, live scores, and free streaming guide.">
+<meta property="og:title" content="LiveWC26 — Who Will Win? AI World Cup 2026 Predictor">
+<meta property="og:description" content="Pick any 2 of the 48 teams. Get AI win probability + tactical analysis. Score prediction game + private leagues. Free!">
+<meta property="og:image" content="https://livewc26.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://livewc26.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiveWC26">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LiveWC26 — AI World Cup 2026 Predictor">
+<meta name="twitter:description" content="Pick any 2 teams, get AI win probability + analysis. Free!">
+<meta name="twitter:image" content="https://livewc26.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -859,7 +871,8 @@ function copyPrediction(){
   showToast('Copied!','success');
 }
 function shareGameFacebook(){
-  const url='https://livewc26.com';
+  if(!gMatch)return;
+  const url=`https://livewc26.com/share.html?t1=${encodeURIComponent(gMatch.t1)}&t2=${encodeURIComponent(gMatch.t2)}&s1=${gScore[0]}&s2=${gScore[1]}&f1=${encodeURIComponent(gMatch.f1)}&f2=${encodeURIComponent(gMatch.f2)}`;
   window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank','width=600,height=400');
 }
 function shareGameWhatsApp(){
@@ -1093,6 +1106,12 @@ async function loadMyLeague(){
 window.addEventListener('load',()=>{
   const savedEmail=localStorage.getItem('my_league_email');
   if(savedEmail)document.getElementById('my-league-email').value=savedEmail;
+  // Handle URL tab parameter
+  const params=new URLSearchParams(window.location.search);
+  const tab=params.get('tab');
+  if(tab&&['home','ai','game','league','watch','schedule'].includes(tab)){
+    showPage(tab);
+  }
 });
 </script>
 
