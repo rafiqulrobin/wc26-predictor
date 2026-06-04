@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// Get URL params
+const p = new URLSearchParams(window.location.search);
+const t1 = p.get('t1') || 'Team 1';
+const t2 = p.get('t2') || 'Team 2';
+const s1 = p.get('s1') || '0';
+const s2 = p.get('s2') || '0';
+const f1 = p.get('f1') || '';
+const f2 = p.get('f2') || '';
+
+// Build OG image URL
+const imgUrl = `https://livewc26.com/api/share-image?t1=${encodeURIComponent(t1)}&t2=${encodeURIComponent(t2)}&s1=${s1}&s2=${s2}&f1=${encodeURIComponent(f1)}&f2=${encodeURIComponent(f2)}`;
+const title = `${f1} ${t1} ${s1}–${s2} ${t2} ${f2} — My WC26 Prediction`;
+const desc = `I predicted ${t1} ${s1}-${s2} ${t2} in the World Cup 2026! Can you beat my score? Make your own prediction at livewc26.com`;
+
+// Set meta tags dynamically
+document.title = title;
+
+function setMeta(prop, content, isOg) {
+  const el = document.createElement('meta');
+  if (isOg) el.setAttribute('property', prop);
+  else el.setAttribute('name', prop);
+  el.setAttribute('content', content);
+  document.head.appendChild(el);
+}
+
+setMeta('og:title', title, true);
+setMeta('og:description', desc, true);
+setMeta('og:image', imgUrl, true);
+setMeta('og:image:width', '1200', true);
+setMeta('og:image:height', '630', true);
+setMeta('og:url', window.location.href, true);
+setMeta('og:type', 'website', true);
+setMeta('twitter:card', 'summary_large_image', false);
+setMeta('twitter:title', title, false);
+setMeta('twitter:image', imgUrl, false);
+
+// Redirect to game page after short delay
+setTimeout(() => {
+  window.location.href = '/?tab=game';
+}, 100);
+</script>
+</head>
+<body>
+<p>Redirecting...</p>
+</body>
+</html>
