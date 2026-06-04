@@ -408,9 +408,42 @@ footer p{margin-bottom:6px}
           <div class="analysis-text" id="analysis-text"></div>
           <div class="factors" id="factors-grid"></div>
         </div>
-        <div class="share-row">
-          <button class="share-btn tw" onclick="shareTwitter()">🐦 Share on X</button>
-          <button class="share-btn" onclick="copyPrediction()">🔗 Copy</button>
+        <!-- SHARE CARD -->
+        <div style="padding:16px 24px;border-top:1px solid var(--border)">
+          <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px">Share your prediction</div>
+          
+          <!-- Visual Share Card -->
+          <div id="share-card-visual" style="background:linear-gradient(135deg,#0f1018 0%,#1a1a24 100%);border:1px solid rgba(240,192,64,0.3);border-radius:14px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(240,192,64,0.08) 0%,transparent 70%)"></div>
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:12px">⚽ AI World Cup 2026 Predictor</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+              <div style="text-align:center;flex:1">
+                <div style="font-size:28px" id="sc-flag1"></div>
+                <div style="font-size:13px;font-weight:500;margin-top:4px" id="sc-name1"></div>
+                <div style="font-family:var(--font-d);font-size:28px;color:var(--green);margin-top:2px" id="sc-prob1"></div>
+              </div>
+              <div style="font-family:var(--font-d);font-size:18px;color:var(--muted2);flex-shrink:0;padding:0 10px">VS</div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:28px" id="sc-flag2"></div>
+                <div style="font-size:13px;font-weight:500;margin-top:4px" id="sc-name2"></div>
+                <div style="font-family:var(--font-d);font-size:28px;color:var(--muted);margin-top:2px" id="sc-prob2"></div>
+              </div>
+            </div>
+            <div style="background:rgba(240,192,64,0.1);border:1px solid rgba(240,192,64,0.2);border-radius:8px;padding:8px 12px;text-align:center;margin-bottom:10px">
+              <span style="color:var(--gold);font-size:14px;font-weight:500" id="sc-winner"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-size:11px;color:var(--muted2)">livewc26.com</div>
+              <div style="font-size:11px;color:var(--muted2)">#WorldCup2026</div>
+            </div>
+          </div>
+
+          <div class="share-row">
+            <button class="share-btn" style="background:rgba(24,119,242,0.12);border-color:rgba(24,119,242,0.3);color:#4a90d9" onclick="shareFacebook()">📘 Facebook</button>
+            <button class="share-btn" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25);color:#25d366" onclick="shareWhatsApp()">💬 WhatsApp</button>
+            <button class="share-btn tw" onclick="shareTwitter()">🐦 X</button>
+            <button class="share-btn" onclick="copyPrediction()">🔗 Copy</button>
+          </div>
         </div>
       </div>
     </div>
@@ -442,32 +475,6 @@ footer p{margin-bottom:6px}
             <div class="countdown-label" id="countdown-label">Prediction closes in:</div>
             <div class="countdown-timer" id="countdown-timer">--:--:--</div>
           </div>
-         <!-- Points System Info -->
-<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px">
-  <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:12px">⚡ How Points Work</div>
-  <div style="display:grid;gap:8px">
-    <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px">
-      <span style="color:var(--muted)">🏆 Correct result (win/draw/loss)</span>
-      <span style="color:var(--green);font-weight:600">+5 pts</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px">
-      <span style="color:var(--muted)">⚽ Team 1 exact goals correct</span>
-      <span style="color:var(--green);font-weight:600">+2 pts</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px">
-      <span style="color:var(--muted)">⚽ Team 2 exact goals correct</span>
-      <span style="color:var(--green);font-weight:600">+2 pts</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px">
-      <span style="color:var(--muted)">⭐ Perfect score (both goals exact)</span>
-      <span style="color:var(--gold);font-weight:600">+1 pt</span>
-    </div>
-    <div style="border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:15px">
-      <span style="font-weight:500">Maximum per match</span>
-      <span style="color:var(--gold);font-family:var(--font-d);font-size:22px">10 pts</span>
-    </div>
-  </div>
-</div>
           <div class="score-grid">
             <div class="score-team">
               <div class="score-flag" id="gf1"></div>
@@ -501,6 +508,35 @@ footer p{margin-bottom:6px}
             <input class="field-input" id="g-email" placeholder="your@email.com" type="email" required>
           </div>
           <div class="success-msg" id="game-success">✅ Prediction submitted! Good luck! 🎯</div>
+          
+          <!-- GAME SHARE CARD -->
+          <div id="game-share-card" style="display:none;margin-top:12px">
+            <div style="background:linear-gradient(135deg,#0f1018 0%,#1a1a24 100%);border:1px solid rgba(240,192,64,0.3);border-radius:14px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden">
+              <div style="position:absolute;top:0;right:0;width:100px;height:100px;background:radial-gradient(circle,rgba(240,192,64,0.08) 0%,transparent 70%)"></div>
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px">⚽ My WC26 Prediction — livewc26.com</div>
+              <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:12px">
+                <div style="text-align:center">
+                  <div style="font-size:24px" id="gsc-flag1"></div>
+                  <div style="font-size:12px;font-weight:500;margin-top:3px" id="gsc-name1"></div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-family:var(--font-d);font-size:36px;color:var(--gold);line-height:1"><span id="gsc-score1">0</span> — <span id="gsc-score2">0</span></div>
+                  <div style="font-size:10px;color:var(--muted);margin-top:2px">My prediction</div>
+                </div>
+                <div style="text-align:center">
+                  <div style="font-size:24px" id="gsc-flag2"></div>
+                  <div style="font-size:12px;font-weight:500;margin-top:3px" id="gsc-name2"></div>
+                </div>
+              </div>
+              <div style="text-align:center;font-size:11px;color:var(--muted2)">Make your own prediction → livewc26.com</div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="share-btn" style="flex:1;justify-content:center;background:rgba(24,119,242,0.12);border-color:rgba(24,119,242,0.3);color:#4a90d9" onclick="shareGameFacebook()">📘 Facebook</button>
+              <button class="share-btn" style="flex:1;justify-content:center;background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25);color:#25d366" onclick="shareGameWhatsApp()">💬 WhatsApp</button>
+              <button class="share-btn" style="flex:1;justify-content:center" onclick="copyGamePrediction()">🔗 Copy</button>
+            </div>
+          </div>
+
           <div class="lock-msg" id="lock-msg" style="display:none">🔒 Match has started — predictions are locked.</div>
           <button class="submit-btn" id="submit-btn" onclick="submitPrediction()">SUBMIT PREDICTION →</button>
         </div>
@@ -543,7 +579,7 @@ footer p{margin-bottom:6px}
             <div class="vpn-tagline">Fastest for HD streaming</div>
             <ul class="vpn-features"><li>Works with BBC iPlayer & SBS</li><li>10 devices simultaneously</li><li>30-day money-back guarantee</li><li>No logs policy</li></ul>
             <div class="vpn-commission">Special deal: Up to 63% off + 3 months free</div>
-            <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=149238&url_id=902" class="vpn-link p" target="_blank" rel="nofollow sponsored">Get NordVPN →</a>
+            <a href="https://nordvpn.com" class="vpn-link p" target="_blank" rel="nofollow sponsored">Get NordVPN →</a>
           </div>
           <div class="vpn-card">
             <div class="vpn-name">Surfshark</div>
@@ -634,12 +670,7 @@ footer p{margin-bottom:6px}
 <footer>
   <p style="font-family:var(--font-d);font-size:20px;margin-bottom:8px">LIVE<span style="color:var(--gold)">WC26</span></p>
   <p>Your free guide to World Cup 2026 — predictions, scores, and streaming.</p>
-  <p style="margin-top:12px">
-    <a href="/about.html" style="color:var(--gold);text-decoration:none;margin:0 8px">About</a>
-    <a href="/contact.html" style="color:var(--gold);text-decoration:none;margin:0 8px">Contact</a>
-    <a href="/privacy.html" style="color:var(--gold);text-decoration:none;margin:0 8px">Privacy Policy</a>
-  </p>
-  <p style="margin-top:8px;font-size:12px">Not affiliated with FIFA · Affiliate links disclosed · AI predictions for entertainment</p>
+  <p style="margin-top:6px;font-size:12px">Not affiliated with FIFA · Affiliate links disclosed · AI predictions for entertainment</p>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -795,6 +826,14 @@ function showResult(t1,t2,pred){
   }).join('');
   document.getElementById('result-card').classList.add('show');
   document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'start'});
+  // Populate share card
+  document.getElementById('sc-flag1').textContent=t1.flag;
+  document.getElementById('sc-flag2').textContent=t2.flag;
+  document.getElementById('sc-name1').textContent=t1.name;
+  document.getElementById('sc-name2').textContent=t2.name;
+  document.getElementById('sc-prob1').textContent=p1+'%';
+  document.getElementById('sc-prob2').textContent=p2+'%';
+  document.getElementById('sc-winner').textContent='🏆 '+pred.predicted_winner+' wins — '+pred.confidence+' confidence';
 }
 function shareTwitter(){
   if(!lastPred)return;
@@ -802,11 +841,47 @@ function shareTwitter(){
   const txt=`${t1.flag} ${t1.name} ${pred.team1_win_prob}% vs ${t2.flag} ${t2.name} ${pred.team2_win_prob}%\n\n🏆 AI predicts: ${pred.predicted_winner} wins!\n\nlivewc26.com #WorldCup2026`;
   window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(txt),'_blank');
 }
+function shareFacebook(){
+  if(!lastPred)return;
+  const url='https://livewc26.com';
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank','width=600,height=400');
+}
+function shareWhatsApp(){
+  if(!lastPred)return;
+  const{t1,t2,pred}=lastPred;
+  const txt=`${t1.flag} *${t1.name} ${pred.team1_win_prob}%* vs ${t2.flag} *${t2.name} ${pred.team2_win_prob}%*\n\n🏆 AI predicts: *${pred.predicted_winner} wins!*\n\nTry it: livewc26.com #WorldCup2026`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+}
 function copyPrediction(){
   if(!lastPred)return;
   const{t1,t2,pred}=lastPred;
   navigator.clipboard.writeText(`${t1.name} ${pred.team1_win_prob}% vs ${t2.name} ${pred.team2_win_prob}% — AI predicts ${pred.predicted_winner} wins! livewc26.com #WorldCup2026`);
   showToast('Copied!','success');
+}
+function shareGameFacebook(){
+  const url='https://livewc26.com';
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank','width=600,height=400');
+}
+function shareGameWhatsApp(){
+  if(!gMatch)return;
+  const txt=`⚽ *My World Cup 2026 Prediction!*\n\n${gMatch.f1} *${gMatch.t1}* ${gScore[0]} — ${gScore[1]} *${gMatch.t2}* ${gMatch.f2}\n\nCan you beat my score? Make your prediction:\n👉 livewc26.com #WorldCup2026`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+}
+function copyGamePrediction(){
+  if(!gMatch)return;
+  const txt=`⚽ My WC26 Prediction: ${gMatch.f1} ${gMatch.t1} ${gScore[0]}-${gScore[1]} ${gMatch.t2} ${gMatch.f2}\nMake your prediction: livewc26.com #WorldCup2026`;
+  navigator.clipboard.writeText(txt);
+  showToast('Copied! Share with friends 🔗','success');
+}
+function showGameShareCard(){
+  if(!gMatch)return;
+  document.getElementById('gsc-flag1').textContent=gMatch.f1;
+  document.getElementById('gsc-flag2').textContent=gMatch.f2;
+  document.getElementById('gsc-name1').textContent=gMatch.t1;
+  document.getElementById('gsc-name2').textContent=gMatch.t2;
+  document.getElementById('gsc-score1').textContent=gScore[0];
+  document.getElementById('gsc-score2').textContent=gScore[1];
+  document.getElementById('game-share-card').style.display='block';
 }
 function onMatchSelect(){
   const sel=document.getElementById('match-select');
@@ -864,6 +939,7 @@ async function submitPrediction(){
     }else{
       document.getElementById('game-success').className='success-msg show';
       showToast('Prediction submitted! 🎯','success');
+      showGameShareCard();
     }
   }catch(e){showToast('Error: '+e.message,'error')}
   finally{btn.disabled=false;btn.textContent='SUBMIT PREDICTION →'}
@@ -1088,5 +1164,17 @@ window.addEventListener('load',()=>{
     </div>
   </div>
 </div>
+
+<footer>
+  <p style="font-family:var(--font-d);font-size:20px;margin-bottom:8px">LIVE<span style="color:var(--gold)">WC26</span></p>
+  <p>Your free guide to World Cup 2026 — predictions, scores, and streaming.</p>
+  <p style="margin-top:12px">
+    <a href="/about.html" style="color:var(--gold);text-decoration:none;margin:0 8px">About</a>
+    <a href="/contact.html" style="color:var(--gold);text-decoration:none;margin:0 8px">Contact</a>
+    <a href="/privacy.html" style="color:var(--gold);text-decoration:none;margin:0 8px">Privacy Policy</a>
+  </p>
+  <p style="margin-top:8px;font-size:12px">Not affiliated with FIFA · Affiliate links disclosed · AI predictions for entertainment</p>
+</footer>
+
 </body>
 </html>
