@@ -678,13 +678,6 @@ footer p{margin-bottom:6px}
     </div>
   </div>
 </div>
-
-<footer>
-  <p style="font-family:var(--font-d);font-size:20px;margin-bottom:8px">LIVE<span style="color:var(--gold)">WC26</span></p>
-  <p>Your free guide to World Cup 2026 — predictions, scores, and streaming.</p>
-  <p style="margin-top:6px;font-size:12px">Not affiliated with FIFA · Affiliate links disclosed · AI predictions for entertainment</p>
-</footer>
-
 <div class="toast" id="toast"></div>
 
 <script>
@@ -872,8 +865,8 @@ function copyPrediction(){
 }
 function shareGameFacebook(){
   if(!gMatch)return;
-  const url=`https://livewc26.com/share.html?t1=${encodeURIComponent(gMatch.t1)}&t2=${encodeURIComponent(gMatch.t2)}&s1=${gScore[0]}&s2=${gScore[1]}&f1=${encodeURIComponent(gMatch.f1)}&f2=${encodeURIComponent(gMatch.f2)}`;
-  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url),'_blank','width=600,height=400');
+  const shareUrl=`https://livewc26.com/api/share?t1=${encodeURIComponent(gMatch.t1)}&t2=${encodeURIComponent(gMatch.t2)}&s1=${gScore[0]}&s2=${gScore[1]}&f1=${encodeURIComponent(gMatch.f1)}&f2=${encodeURIComponent(gMatch.f2)}`;
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareUrl),'_blank','width=600,height=400');
 }
 function shareGameWhatsApp(){
   if(!gMatch)return;
