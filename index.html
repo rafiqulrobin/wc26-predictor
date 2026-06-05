@@ -679,6 +679,7 @@ footer p{margin-bottom:6px}
   </div>
 </div>
 
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -866,8 +867,8 @@ function copyPrediction(){
 }
 function shareGameFacebook(){
   if(!gMatch)return;
-  const workerUrl=`https://wc26-og.rafiqulhaquerobin.workers.dev/?t1=${encodeURIComponent(gMatch.t1)}&t2=${encodeURIComponent(gMatch.t2)}&s1=${gScore[0]}&s2=${gScore[1]}&f1=${encodeURIComponent(gMatch.f1)}&f2=${encodeURIComponent(gMatch.f2)}`;
-  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(workerUrl),'_blank','width=600,height=400');
+  const shareUrl=`https://livewc26.com/api/share?t1=${encodeURIComponent(gMatch.t1)}&t2=${encodeURIComponent(gMatch.t2)}&s1=${gScore[0]}&s2=${gScore[1]}&f1=${encodeURIComponent(gMatch.f1)}&f2=${encodeURIComponent(gMatch.f2)}`;
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareUrl),'_blank','width=600,height=400');
 }
 function shareGameWhatsApp(){
   if(!gMatch)return;
