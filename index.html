@@ -733,6 +733,7 @@ async function handleSubscribe(){
   if(!email||!username){showToast('Please enter your name and email','error');return}
   try{
     const{error}=await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
+    await addToBrevo(email, username);
     if(error)throw error;
     document.getElementById('sub-success').style.display='block';
     showToast('✓ Subscribed!','success');
@@ -936,6 +937,7 @@ async function submitPrediction(){
   btn.disabled=true;btn.textContent='Submitting...';
   try{
     await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
+   await addToBrevo(email, username);
     const{error}=await sb.from('predictions').insert({
       email,username,match_id:gMatch.id,
       team1:gMatch.t1,team2:gMatch.t2,
@@ -1027,6 +1029,7 @@ async function createLeague(){
     if(leagueErr)throw leagueErr;
     await sb.from('league_members').insert({league_code:code,email,username});
     await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
+    await addToBrevo(email, username);
     currentLeagueCode=code;
     document.getElementById('new-league-code').textContent=code;
     document.getElementById('create-form').style.display='none';
@@ -1056,6 +1059,7 @@ async function joinLeague(){
       throw joinErr;
     }
     await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
+   await addToBrevo(email, username);
     localStorage.setItem('my_league_code',code);localStorage.setItem('my_league_email',email);
     sucEl.textContent=`✅ Joined "${leagues[0].name}"! Check "My League" tab.`;
     sucEl.className='league-success show';
@@ -1064,6 +1068,13 @@ async function joinLeague(){
     document.getElementById('join-username').value='';
     document.getElementById('join-email').value='';
   }catch(e){errEl.textContent='Error: '+e.message;errEl.className='league-error show'}
+}
+ async function addToBrevo(email, username) {
+  await fetch('/api/add-contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, username })
+  });
 }
 async function loadMyLeague(){
   const email=document.getElementById('my-league-email').value.trim();
