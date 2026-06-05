@@ -1,7 +1,5 @@
 {
   "name": "wc26-predictor",
-  "version": "1.0.0",
-  "dependencies": {
-    "canvas": "^2.11.2"
+  "version": "1.0.0"
   }
 }
