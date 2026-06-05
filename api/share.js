@@ -32,12 +32,11 @@ export default async function handler(req) {
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${desc}">
 <meta name="twitter:image" content="${imgUrl}">
-<meta http-equiv="refresh" content="0;url=https://livewc26.com/?tab=game">
 </head>
 <body style="background:#07080d;color:#eeecea;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;flex-direction:column;gap:16px;">
 <div style="font-size:32px;font-weight:900;">LIVE<span style="color:#f0c040;">WC26</span></div>
-<p style="color:#7a7a8a;">Redirecting...</p>
-<script>setTimeout(()=>{window.location.href='https://livewc26.com/?tab=game'},100);</script>
+<p style="color:#7a7a8a;">${t1} ${s1}–${s2} ${t2}</p>
+<script>setTimeout(()=>{window.location.href='https://livewc26.com/?tab=game'},200);</script>
 </body>
 </html>`;
 
@@ -45,6 +44,7 @@ export default async function handler(req) {
     headers: {
       'Content-Type': 'text/html',
       'Cache-Control': 'no-cache',
+      'X-Robots-Tag': 'noindex',
     }
   });
 }
