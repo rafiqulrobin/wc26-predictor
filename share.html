@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// Read URL params
+const p = new URLSearchParams(window.location.search);
+const t1 = p.get('t1') || 'Team 1';
+const t2 = p.get('t2') || 'Team 2';
+const s1 = p.get('s1') || '0';
+const s2 = p.get('s2') || '0';
+const f1 = p.get('f1') || '';
+const f2 = p.get('f2') || '';
+
+// Build dynamic OG image URL
+const imgUrl = `https://livewc26.com/api/og-image?t1=${encodeURIComponent(t1)}&t2=${encodeURIComponent(t2)}&s1=${s1}&s2=${s2}&f1=${encodeURIComponent(f1)}&f2=${encodeURIComponent(f2)}`;
+const title = `${f1} ${t1} ${s1}–${s2} ${t2} ${f2} — My WC26 Prediction`;
+const desc = `I predicted ${t1} ${s1}-${s2} ${t2}! Can you beat my score? Make your own prediction at livewc26.com 🏆`;
+
+// Set page title
+document.title = title;
+
+// Inject meta tags
+const metas = [
+  ['og:title', title],
+  ['og:description', desc],
+  ['og:image', imgUrl],
+  ['og:image:width', '1200'],
+  ['og:image:height', '630'],
+  ['og:url', window.location.href],
+  ['og:type', 'website'],
+  ['og:site_name', 'LiveWC26'],
+];
+metas.forEach(([prop, content]) => {
+  const el = document.createElement('meta');
+  el.setAttribute('property', prop);
+  el.setAttribute('content', content);
+  document.head.appendChild(el);
+});
+
+[
+  ['twitter:card', 'summary_large_image'],
+  ['twitter:title', title],
+  ['twitter:description', desc],
+  ['twitter:image', imgUrl],
+].forEach(([name, content]) => {
+  const el = document.createElement('meta');
+  el.setAttribute('name', name);
+  el.setAttribute('content', content);
+  document.head.appendChild(el);
+});
+
+// Redirect to game page
+setTimeout(() => { window.location.href = '/?tab=game'; }, 200);
+</script>
+
+<!-- Static fallback OG tags (for Facebook crawler) -->
+<meta property="og:title" content="My World Cup 2026 Score Prediction">
+<meta property="og:description" content="I made my WC26 prediction! Can you beat my score? livewc26.com">
+<meta property="og:image" content="https://livewc26.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://livewc26.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://livewc26.com/og-image.png">
+<title>My WC26 Prediction — livewc26.com</title>
+</head>
+<body style="background:#07080d;color:#eeecea;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;flex-direction:column;gap:16px;">
+  <div style="font-size:32px;font-weight:900;">LIVE<span style="color:#f0c040;">WC26</span></div>
+  <p style="color:#7a7a8a;">Redirecting to prediction game...</p>
+</body>
+</html>
