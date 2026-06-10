@@ -621,7 +621,7 @@ footer p{margin-bottom:6px}
       <div class="section-title">Live Scores</div>
       <div class="score-embed-wrap" style="margin-bottom:32px">
         <div class="embed-header"><span class="live-badge">LIVE</span><span class="embed-title">FIFA World Cup 2026 — All Matches</span></div>
-        <iframe src="https://www.scoreaxis.com/widget/live-games/1?autoHeight=0&font=Roboto&removeBg=1&widgetTheme=dark" width="100%" height="480" style="display:block;border:none" allowfullscreen></iframe>
+        <div id="live-scores-container" style="padding:16px;min-height:120px"><div style="color:var(--muted);text-align:center;padding:32px">Loading scores...</div></div>
       </div>
       <div class="section-label">Fixtures</div>
       <div class="section-title">Full Schedule</div>
@@ -1226,6 +1226,38 @@ window.addEventListener('load',()=>{
   if(tab&&['home','ai','game','league','watch','schedule'].includes(tab)){
     showPage(tab);
   }
+
+async function fetchLiveScores(){
+  const container=document.getElementById('live-scores-container');
+  if(!container)return;
+  try{
+    // TheSportsDB free API - WC2026 league ID
+    const res=await fetch('https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4978');
+    const data=await res.json();
+    const events=data.events;
+    if(!events||events.length===0){
+      container.innerHTML='<div style="color:var(--muted);text-align:center;padding:32px">No matches right now. Check the schedule below ↓</div>';
+      return;
+    }
+    container.innerHTML=events.slice(0,10).map(e=>{
+      const d=new Date(e.strTimestamp||e.dateEvent+'T'+e.strTime+'Z');
+      const timeStr=d.toLocaleDateString(undefined,{month:'short',day:'numeric'})+' '+d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});
+      const score=e.intHomeScore!==null&&e.intAwayScore!==null?`<span style="font-family:Georgia,serif;font-size:22px;font-weight:900;color:var(--gold);margin:0 12px">${e.intHomeScore} — ${e.intAwayScore}</span>`:`<span style="color:var(--muted);margin:0 12px;font-size:13px">${timeStr}</span>`;
+      const status=e.strStatus==='Match Finished'?'<span style="font-size:11px;background:rgba(62,207,142,0.15);color:#3ecf8e;padding:2px 8px;border-radius:100px">FT</span>':e.strProgress?`<span style="font-size:11px;background:rgba(240,96,96,0.15);color:#f06060;padding:2px 8px;border-radius:100px">${e.strProgress}'</span>`:'<span style="font-size:11px;color:var(--muted)">upcoming</span>';
+      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 8px;border-bottom:1px solid var(--border)">
+        <div style="flex:1;text-align:right;font-size:14px;font-weight:500">${e.strHomeTeam}</div>
+        <div style="text-align:center;min-width:120px">${score}</div>
+        <div style="flex:1;text-align:left;font-size:14px;font-weight:500">${e.strAwayTeam}</div>
+        <div style="margin-left:12px">${status}</div>
+      </div>`;
+    }).join('');
+  }catch(e){
+    container.innerHTML='<div style="color:var(--muted);text-align:center;padding:32px">Scores unavailable. Check back during match time.</div>';
+  }
+}
+
+  fetchLiveScores();
+  setInterval(fetchLiveScores,60000);
   renderMatchList();
 });
 </script>
