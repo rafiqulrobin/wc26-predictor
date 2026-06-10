@@ -625,56 +625,14 @@ footer p{margin-bottom:6px}
       </div>
       <div class="section-label">Fixtures</div>
       <div class="section-title">Full Schedule</div>
-      <p class="section-desc">All times in ET (Eastern Time). Use the converter for your local time.</p>
-      <div class="tz-tool">
-        <div style="font-size:14px;font-weight:500;margin-bottom:14px">Convert to your timezone</div>
-        <div class="tz-row">
-          <div class="tz-field"><label>Match time (ET)</label><input type="time" id="tz-input" value="15:00"></div>
-          <div class="tz-field"><label>Your timezone</label>
-            <select id="tz-sel">
-              <option value="-5">USA Eastern (ET)</option>
-              <option value="-6">USA Central (CT)</option>
-              <option value="-7">USA Mountain (MT)</option>
-              <option value="-8">USA Pacific (PT)</option>
-              <option value="0">UK / London (GMT)</option>
-              <option value="1">Central Europe (CET)</option>
-              <option value="3">Saudi Arabia (AST)</option>
-              <option value="5.5">India (IST)</option>
-              <option value="6">Bangladesh (BST)</option>
-              <option value="7">Thailand / Vietnam (ICT)</option>
-              <option value="8">Singapore / Malaysia (SGT)</option>
-              <option value="9">Japan / Korea (JST)</option>
-              <option value="10">Australia Eastern (AEST)</option>
-              <option value="-3">Brazil (BRT)</option>
-            </select>
-          </div>
-          <button class="tz-convert-btn" onclick="convertTZ()">Convert</button>
-        </div>
-        <div class="tz-result" id="tz-result"></div>
-      </div>
+      <p class="section-desc">All times shown in your local timezone automatically.</p>
       <div class="filter-row">
         <button class="filter-btn active" onclick="filterMatches('all',this)">All</button>
         <button class="filter-btn" onclick="filterMatches('group',this)">Group Stage</button>
         <button class="filter-btn" onclick="filterMatches('knockout',this)">Knockout</button>
         <button class="filter-btn" onclick="filterMatches('final',this)">Final</button>
       </div>
-      <div class="match-list">
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 11</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇲🇽 Mexico vs South Africa 🇿🇦</div><div class="match-venue">Estadio Azteca · Mexico City</div></div><div class="match-stage-badge">Group A</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 12</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇺🇸 USA vs Paraguay 🇵🇾</div><div class="match-venue">SoFi Stadium · Los Angeles</div></div><div class="match-stage-badge">Group D</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>6:00 PM ET</div><div><div class="match-teams-txt">🇧🇷 Brazil vs Morocco 🇲🇦</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Group C</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 13</strong>9:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland vs Haiti 🇭🇹</div><div class="match-venue">Gillette Stadium · Boston</div></div><div class="match-stage-badge">Group C</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 14</strong>1:00 PM ET</div><div><div class="match-teams-txt">🇩🇪 Germany vs Curaçao 🇨🇼</div><div class="match-venue">NRG Stadium · Houston</div></div><div class="match-stage-badge">Group E</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 15</strong>12:00 PM ET</div><div><div class="match-teams-txt">🇪🇸 Spain vs Cape Verde 🇨🇻</div><div class="match-venue">Mercedes-Benz Stadium · Atlanta</div></div><div class="match-stage-badge">Group H</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>3:00 PM ET</div><div><div class="match-teams-txt">🇫🇷 France vs Senegal 🇸🇳</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Group I</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 16</strong>9:00 PM ET</div><div><div class="match-teams-txt">🇦🇷 Argentina vs Algeria 🇩🇿</div><div class="match-venue">Arrowhead · Kansas City</div></div><div class="match-stage-badge">Group J</div></div>
-        <div class="match-item" data-stage="group"><div class="match-date"><strong>Jun 17</strong>4:00 PM ET</div><div><div class="match-teams-txt">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Croatia 🇭🇷</div><div class="match-venue">AT&T Stadium · Dallas</div></div><div class="match-stage-badge">Group L</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jun 28</strong>TBD</div><div><div class="match-teams-txt">Round of 32 begins</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 32</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 4</strong>TBD</div><div><div class="match-teams-txt">Round of 16 begins</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Round of 16</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 9</strong>TBD</div><div><div class="match-teams-txt">Quarterfinals begin</div><div class="match-venue">Multiple venues</div></div><div class="match-stage-badge">Quarterfinal</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 14</strong>TBD</div><div><div class="match-teams-txt">Semifinal 1</div><div class="match-venue">MetLife Stadium · New York</div></div><div class="match-stage-badge">Semifinal</div></div>
-        <div class="match-item" data-stage="knockout"><div class="match-date"><strong>Jul 15</strong>TBD</div><div><div class="match-teams-txt">Semifinal 2</div><div class="match-venue">AT&T Stadium · Dallas</div></div><div class="match-stage-badge">Semifinal</div></div>
-        <div class="match-item final-match" data-stage="final"><div class="match-date"><strong>Jul 19</strong>3:00 PM ET</div><div><div class="match-teams-txt" style="font-size:17px">🏆 World Cup Final</div><div class="match-venue">MetLife Stadium · East Rutherford, NJ</div></div><div class="match-stage-badge" style="border-color:rgba(240,192,64,0.3);color:var(--gold)">Final</div></div>
-      </div>
+      <div class="match-list" id="match-list-auto"></div>
     </div>
   </div>
 </div>
@@ -727,16 +685,29 @@ function showToast(msg,type=''){
   t.textContent=msg;t.className='toast '+type+' show';
   setTimeout(()=>t.className='toast',3000);
 }
+async function safeUpsertSubscriber(email, username){
+  // Check if email already exists
+  const{data:existing}=await sb.from('subscribers').select('username,total_points').eq('email',email).single();
+  if(existing){
+    // Email exists — keep original username, don't overwrite
+    return {username: existing.username, isNew: false};
+  } else {
+    // New subscriber
+    await sb.from('subscribers').insert({email, username, total_points:0});
+    await fetch('/api/add-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,username})});
+    return {username, isNew: true};
+  }
+}
+
 async function handleSubscribe(){
   const email=document.getElementById('home-email').value.trim();
   const username=document.getElementById('home-username').value.trim();
   if(!email||!username){showToast('Please enter your name and email','error');return}
   try{
-    const{error}=await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
-    await addToBrevo(email, username);
-    if(error)throw error;
+    const{username:savedUsername, isNew}=await safeUpsertSubscriber(email, username);
     document.getElementById('sub-success').style.display='block';
-    showToast('✓ Subscribed!','success');
+    if(isNew){showToast('✓ Subscribed!','success')}
+    else{showToast(`✓ Welcome back, ${savedUsername}!`,'success')}
   }catch(e){showToast('Error: '+e.message,'error')}
 }
 function openSearch(n){
@@ -936,10 +907,9 @@ async function submitPrediction(){
   const btn=document.getElementById('submit-btn');
   btn.disabled=true;btn.textContent='Submitting...';
   try{
-    await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
-   await addToBrevo(email, username);
+    const{username:savedUsername}=await safeUpsertSubscriber(email, username);
     const{error}=await sb.from('predictions').insert({
-      email,username,match_id:gMatch.id,
+      email,username:savedUsername,match_id:gMatch.id,
       team1:gMatch.t1,team2:gMatch.t2,
       pred_score1:gScore[0],pred_score2:gScore[1]
     });
@@ -975,23 +945,170 @@ function switchLB(type,btn){
   btn.classList.add('active');
   loadLeaderboard();
 }
-function convertTZ(){
-  const t=document.getElementById('tz-input').value;
-  const off=parseFloat(document.getElementById('tz-sel').value);
-  if(!t)return;
-  const[h,m]=t.split(':').map(Number);
-  const localH=h+5+off;
-  const fh=((localH%24)+24)%24;
-  const day=Math.floor(localH/24);
-  const period=fh>=12?'PM':'AM';
-  const dh=fh%12===0?12:fh%12;
-  const dm=String(m).padStart(2,'0');
-  const dayNote=day>0?' (next day)':day<0?' (prev day)':'';
-  const tzName=document.getElementById('tz-sel').options[document.getElementById('tz-sel').selectedIndex].text;
-  const r=document.getElementById('tz-result');
-  r.textContent=`${tzName}: ${dh}:${dm} ${period}${dayNote}`;
-  r.className='tz-result show';
+// All 104 WC2026 matches — UTC times (converted from UK BST = UTC+1)
+const MATCHES=[
+  // GROUP STAGE
+  // Jun 11
+  {utc:'2026-06-11T19:00:00Z',teams:'🇲🇽 Mexico vs South Africa 🇿🇦',venue:'Estadio Azteca · Mexico City',stage:'group',badge:'Group A'},
+  // Jun 12
+  {utc:'2026-06-12T02:00:00Z',teams:'🇰🇷 South Korea vs Czech Republic 🇨🇿',venue:'Akron · Guadalajara',stage:'group',badge:'Group A'},
+  {utc:'2026-06-12T19:00:00Z',teams:'🇨🇦 Canada vs Bosnia & Herzegovina 🇧🇦',venue:'BMO Field · Toronto',stage:'group',badge:'Group B'},
+  // Jun 13
+  {utc:'2026-06-13T01:00:00Z',teams:'🇺🇸 USA vs Paraguay 🇵🇾',venue:'SoFi Stadium · Los Angeles',stage:'group',badge:'Group D'},
+  {utc:'2026-06-13T19:00:00Z',teams:'🇶🇦 Qatar vs Switzerland 🇨🇭',venue:'Levi\'s Stadium · Santa Clara',stage:'group',badge:'Group B'},
+  {utc:'2026-06-13T22:00:00Z',teams:'🇧🇷 Brazil vs Morocco 🇲🇦',venue:'MetLife Stadium · New Jersey',stage:'group',badge:'Group C'},
+  // Jun 14
+  {utc:'2026-06-14T01:00:00Z',teams:'🇭🇹 Haiti vs Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',venue:'Gillette Stadium · Foxborough',stage:'group',badge:'Group C'},
+  {utc:'2026-06-14T04:00:00Z',teams:'🇦🇺 Australia vs Turkey 🇹🇷',venue:'BC Place · Vancouver',stage:'group',badge:'Group D'},
+  {utc:'2026-06-14T17:00:00Z',teams:'🇩🇪 Germany vs Curaçao 🇨🇼',venue:'NRG Stadium · Houston',stage:'group',badge:'Group E'},
+  {utc:'2026-06-14T20:00:00Z',teams:'🇳🇱 Netherlands vs Japan 🇯🇵',venue:'AT&T Stadium · Arlington',stage:'group',badge:'Group F'},
+  // Jun 15
+  {utc:'2026-06-14T23:00:00Z',teams:'🇨🇮 Ivory Coast vs Ecuador 🇪🇨',venue:'Lincoln Financial · Philadelphia',stage:'group',badge:'Group E'},
+  {utc:'2026-06-15T02:00:00Z',teams:'🇹🇳 Tunisia vs Sweden 🇸🇪',venue:'Estadio Akron · Guadalajara',stage:'group',badge:'Group F'},
+  {utc:'2026-06-15T16:00:00Z',teams:'🇪🇸 Spain vs Cape Verde 🇨🇻',venue:'Mercedes-Benz · Atlanta',stage:'group',badge:'Group H'},
+  {utc:'2026-06-15T19:00:00Z',teams:'🇧🇪 Belgium vs Egypt 🇪🇬',venue:'Lumen Field · Seattle',stage:'group',badge:'Group G'},
+  {utc:'2026-06-15T22:00:00Z',teams:'🇸🇦 Saudi Arabia vs Uruguay 🇺🇾',venue:'Hard Rock Stadium · Miami',stage:'group',badge:'Group H'},
+  // Jun 16
+  {utc:'2026-06-16T01:00:00Z',teams:'🇮🇷 Iran vs New Zealand 🇳🇿',venue:'SoFi Stadium · Los Angeles',stage:'group',badge:'Group G'},
+  {utc:'2026-06-16T19:00:00Z',teams:'🇫🇷 France vs Senegal 🇸🇳',venue:'MetLife Stadium · New Jersey',stage:'group',badge:'Group I'},
+  {utc:'2026-06-16T22:00:00Z',teams:'🇮🇶 Iraq vs Norway 🇳🇴',venue:'Gillette Stadium · Foxborough',stage:'group',badge:'Group I'},
+  // Jun 17
+  {utc:'2026-06-17T01:00:00Z',teams:'🇦🇷 Argentina vs Algeria 🇩🇿',venue:'Arrowhead · Kansas City',stage:'group',badge:'Group J'},
+  {utc:'2026-06-17T04:00:00Z',teams:'🇦🇹 Austria vs Jordan 🇯🇴',venue:'Levi\'s Stadium · Santa Clara',stage:'group',badge:'Group J'},
+  {utc:'2026-06-17T17:00:00Z',teams:'🇵🇹 Portugal vs DR Congo 🇨🇩',venue:'NRG Stadium · Houston',stage:'group',badge:'Group K'},
+  {utc:'2026-06-17T20:00:00Z',teams:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Croatia 🇭🇷',venue:'AT&T Stadium · Arlington',stage:'group',badge:'Group L'},
+  // Jun 18
+  {utc:'2026-06-17T23:00:00Z',teams:'🇬🇭 Ghana vs Panama 🇵🇦',venue:'BMO Field · Toronto',stage:'group',badge:'Group L'},
+  {utc:'2026-06-18T02:00:00Z',teams:'🇺🇿 Uzbekistan vs Colombia 🇨🇴',venue:'Estadio Azteca · Mexico City',stage:'group',badge:'Group K'},
+  {utc:'2026-06-18T16:00:00Z',teams:'🇨🇿 Czech Republic vs South Africa 🇿🇦',venue:'Mercedes-Benz · Atlanta',stage:'group',badge:'Group A'},
+  {utc:'2026-06-18T19:00:00Z',teams:'🇨🇭 Switzerland vs Bosnia & Herzegovina 🇧🇦',venue:'SoFi Stadium · Los Angeles',stage:'group',badge:'Group B'},
+  {utc:'2026-06-18T22:00:00Z',teams:'🇨🇦 Canada vs Qatar 🇶🇦',venue:'BC Place · Vancouver',stage:'group',badge:'Group B'},
+  // Jun 19
+  {utc:'2026-06-19T01:00:00Z',teams:'🇲🇽 Mexico vs South Korea 🇰🇷',venue:'Akron · Guadalajara',stage:'group',badge:'Group A'},
+  {utc:'2026-06-19T19:00:00Z',teams:'🇺🇸 USA vs Australia 🇦🇺',venue:'Lumen Field · Seattle',stage:'group',badge:'Group D'},
+  {utc:'2026-06-19T22:00:00Z',teams:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland vs Morocco 🇲🇦',venue:'Gillette Stadium · Foxborough',stage:'group',badge:'Group C'},
+  // Jun 20
+  {utc:'2026-06-20T00:30:00Z',teams:'🇧🇷 Brazil vs Haiti 🇭🇹',venue:'Lincoln Financial · Philadelphia',stage:'group',badge:'Group C'},
+  {utc:'2026-06-20T03:00:00Z',teams:'🇹🇷 Turkey vs Paraguay 🇵🇾',venue:'Levi\'s Stadium · Santa Clara',stage:'group',badge:'Group D'},
+  {utc:'2026-06-20T17:00:00Z',teams:'🇳🇱 Netherlands vs Sweden 🇸🇪',venue:'NRG Stadium · Houston',stage:'group',badge:'Group F'},
+  {utc:'2026-06-20T20:00:00Z',teams:'🇩🇪 Germany vs Ivory Coast 🇨🇮',venue:'BMO Field · Toronto',stage:'group',badge:'Group E'},
+  // Jun 21
+  {utc:'2026-06-21T00:00:00Z',teams:'🇪🇨 Ecuador vs Curaçao 🇨🇼',venue:'Arrowhead · Kansas City',stage:'group',badge:'Group E'},
+  {utc:'2026-06-21T04:00:00Z',teams:'🇹🇳 Tunisia vs Japan 🇯🇵',venue:'Akron · Guadalajara',stage:'group',badge:'Group F'},
+  {utc:'2026-06-21T16:00:00Z',teams:'🇪🇸 Spain vs Saudi Arabia 🇸🇦',venue:'Mercedes-Benz · Atlanta',stage:'group',badge:'Group H'},
+  {utc:'2026-06-21T19:00:00Z',teams:'🇧🇪 Belgium vs Iran 🇮🇷',venue:'SoFi Stadium · Los Angeles',stage:'group',badge:'Group G'},
+  {utc:'2026-06-21T22:00:00Z',teams:'🇺🇾 Uruguay vs Cape Verde 🇨🇻',venue:'Hard Rock Stadium · Miami',stage:'group',badge:'Group H'},
+  // Jun 22
+  {utc:'2026-06-22T01:00:00Z',teams:'🇳🇿 New Zealand vs Egypt 🇪🇬',venue:'BC Place · Vancouver',stage:'group',badge:'Group G'},
+  {utc:'2026-06-22T17:00:00Z',teams:'🇦🇷 Argentina vs Austria 🇦🇹',venue:'AT&T Stadium · Arlington',stage:'group',badge:'Group J'},
+  {utc:'2026-06-22T21:00:00Z',teams:'🇫🇷 France vs Iraq 🇮🇶',venue:'Lincoln Financial · Philadelphia',stage:'group',badge:'Group I'},
+  // Jun 23
+  {utc:'2026-06-23T00:00:00Z',teams:'🇳🇴 Norway vs Senegal 🇸🇳',venue:'BMO Field · Toronto',stage:'group',badge:'Group I'},
+  {utc:'2026-06-23T03:00:00Z',teams:'🇯🇴 Jordan vs Algeria 🇩🇿',venue:'Levi\'s Stadium · Santa Clara',stage:'group',badge:'Group J'},
+  {utc:'2026-06-23T17:00:00Z',teams:'🇵🇹 Portugal vs Uzbekistan 🇺🇿',venue:'NRG Stadium · Houston',stage:'group',badge:'Group K'},
+  {utc:'2026-06-23T20:00:00Z',teams:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Ghana 🇬🇭',venue:'Gillette Stadium · Foxborough',stage:'group',badge:'Group L'},
+  // Jun 24
+  {utc:'2026-06-23T23:00:00Z',teams:'🇵🇦 Panama vs Croatia 🇭🇷',venue:'Gillette Stadium · Foxborough',stage:'group',badge:'Group L'},
+  {utc:'2026-06-24T02:00:00Z',teams:'🇨🇴 Colombia vs DR Congo 🇨🇩',venue:'Akron · Guadalajara',stage:'group',badge:'Group K'},
+  {utc:'2026-06-24T19:00:00Z',teams:'🇨🇭 Switzerland vs Canada 🇨🇦',venue:'BC Place · Vancouver',stage:'group',badge:'Group B'},
+  {utc:'2026-06-24T19:00:00Z',teams:'🇧🇦 Bosnia & Herzegovina vs Qatar 🇶🇦',venue:'Lumen Field · Seattle',stage:'group',badge:'Group B'},
+  {utc:'2026-06-24T22:00:00Z',teams:'🇲🇦 Morocco vs Haiti 🇭🇹',venue:'Mercedes-Benz · Atlanta',stage:'group',badge:'Group C'},
+  {utc:'2026-06-24T22:00:00Z',teams:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland vs Brazil 🇧🇷',venue:'Hard Rock Stadium · Miami',stage:'group',badge:'Group C'},
+  // Jun 25
+  {utc:'2026-06-25T01:00:00Z',teams:'🇿🇦 South Africa vs South Korea 🇰🇷',venue:'Akron · Guadalajara',stage:'group',badge:'Group A'},
+  {utc:'2026-06-25T01:00:00Z',teams:'🇨🇿 Czech Republic vs Mexico 🇲🇽',venue:'Estadio Azteca · Mexico City',stage:'group',badge:'Group A'},
+  {utc:'2026-06-25T20:00:00Z',teams:'🇨🇼 Curaçao vs Ivory Coast 🇨🇮',venue:'Lincoln Financial · Philadelphia',stage:'group',badge:'Group E'},
+  {utc:'2026-06-25T20:00:00Z',teams:'🇪🇨 Ecuador vs Germany 🇩🇪',venue:'MetLife Stadium · New Jersey',stage:'group',badge:'Group E'},
+  // Jun 26
+  {utc:'2026-06-25T23:00:00Z',teams:'🇹🇳 Tunisia vs Netherlands 🇳🇱',venue:'Arrowhead · Kansas City',stage:'group',badge:'Group F'},
+  {utc:'2026-06-25T23:00:00Z',teams:'🇯🇵 Japan vs Sweden 🇸🇪',venue:'AT&T Stadium · Arlington',stage:'group',badge:'Group F'},
+  {utc:'2026-06-26T02:00:00Z',teams:'🇹🇷 Turkey vs USA 🇺🇸',venue:'SoFi Stadium · Los Angeles',stage:'group',badge:'Group D'},
+  {utc:'2026-06-26T02:00:00Z',teams:'🇵🇾 Paraguay vs Australia 🇦🇺',venue:'Levi\'s Stadium · Santa Clara',stage:'group',badge:'Group D'},
+  {utc:'2026-06-26T19:00:00Z',teams:'🇳🇴 Norway vs France 🇫🇷',venue:'Gillette Stadium · Foxborough',stage:'group',badge:'Group I'},
+  {utc:'2026-06-26T19:00:00Z',teams:'🇸🇳 Senegal vs Iraq 🇮🇶',venue:'BMO Field · Toronto',stage:'group',badge:'Group I'},
+  // Jun 27
+  {utc:'2026-06-27T00:00:00Z',teams:'🇨🇻 Cape Verde vs Saudi Arabia 🇸🇦',venue:'NRG Stadium · Houston',stage:'group',badge:'Group H'},
+  {utc:'2026-06-27T00:00:00Z',teams:'🇺🇾 Uruguay vs Spain 🇪🇸',venue:'Akron · Guadalajara',stage:'group',badge:'Group H'},
+  {utc:'2026-06-27T03:00:00Z',teams:'🇳🇿 New Zealand vs Belgium 🇧🇪',venue:'BC Place · Vancouver',stage:'group',badge:'Group G'},
+  {utc:'2026-06-27T03:00:00Z',teams:'🇪🇬 Egypt vs Iran 🇮🇷',venue:'Lumen Field · Seattle',stage:'group',badge:'Group G'},
+  {utc:'2026-06-27T21:00:00Z',teams:'🇵🇦 Panama vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿',venue:'MetLife Stadium · New Jersey',stage:'group',badge:'Group L'},
+  {utc:'2026-06-27T21:00:00Z',teams:'🇭🇷 Croatia vs Ghana 🇬🇭',venue:'Lincoln Financial · Philadelphia',stage:'group',badge:'Group L'},
+  // Jun 28
+  {utc:'2026-06-27T23:30:00Z',teams:'🇨🇴 Colombia vs Portugal 🇵🇹',venue:'Hard Rock Stadium · Miami',stage:'group',badge:'Group K'},
+  {utc:'2026-06-27T23:30:00Z',teams:'🇨🇩 DR Congo vs Uzbekistan 🇺🇿',venue:'Mercedes-Benz · Atlanta',stage:'group',badge:'Group K'},
+  {utc:'2026-06-28T02:00:00Z',teams:'🇩🇿 Algeria vs Austria 🇦🇹',venue:'Arrowhead · Kansas City',stage:'group',badge:'Group J'},
+  {utc:'2026-06-28T02:00:00Z',teams:'🇯🇴 Jordan vs Argentina 🇦🇷',venue:'AT&T Stadium · Arlington',stage:'group',badge:'Group J'},
+  {utc:'2026-06-28T19:00:00Z',teams:'R32 M73: Group A 2nd vs Group B 2nd',venue:'SoFi Stadium · Los Angeles',stage:'knockout',badge:'Round of 32'},
+  // Jun 29
+  {utc:'2026-06-29T17:00:00Z',teams:'R32 M76: Group C Winner vs Group F 2nd',venue:'NRG Stadium · Houston',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-06-29T20:30:00Z',teams:'R32 M74: Group E Winner vs 3rd place',venue:'Gillette Stadium · Foxborough',stage:'knockout',badge:'Round of 32'},
+  // Jun 30
+  {utc:'2026-06-30T01:00:00Z',teams:'R32 M75: Group F Winner vs Group C 2nd',venue:'Akron · Guadalajara',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-06-30T17:00:00Z',teams:'R32 M78: Group E 2nd vs Group I 2nd',venue:'AT&T Stadium · Arlington',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-06-30T21:00:00Z',teams:'R32 M77: Group I Winner vs 3rd place',venue:'MetLife Stadium · New Jersey',stage:'knockout',badge:'Round of 32'},
+  // Jul 1
+  {utc:'2026-07-01T01:00:00Z',teams:'R32 M79: Group A Winner vs 3rd place',venue:'Estadio Azteca · Mexico City',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-01T16:00:00Z',teams:'R32 M80: Group L Winner vs 3rd place',venue:'Mercedes-Benz · Atlanta',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-01T20:00:00Z',teams:'R32 M82: Group G Winner vs 3rd place',venue:'Lumen Field · Seattle',stage:'knockout',badge:'Round of 32'},
+  // Jul 2
+  {utc:'2026-07-02T00:00:00Z',teams:'R32 M81: Group D Winner vs 3rd place',venue:'Levi\'s Stadium · Santa Clara',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-02T19:00:00Z',teams:'R32 M84: Group H Winner vs Group J 2nd',venue:'SoFi Stadium · Los Angeles',stage:'knockout',badge:'Round of 32'},
+  // Jul 3
+  {utc:'2026-07-02T23:00:00Z',teams:'R32 M83: Group K 2nd vs Group L 2nd',venue:'BMO Field · Toronto',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-03T03:00:00Z',teams:'R32 M85: Group B Winner vs 3rd place',venue:'BC Place · Vancouver',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-03T18:00:00Z',teams:'R32 M88: Group D 2nd vs Group G 2nd',venue:'AT&T Stadium · Arlington',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-03T22:00:00Z',teams:'R32 M86: Group J Winner vs Group H 2nd',venue:'Hard Rock Stadium · Miami',stage:'knockout',badge:'Round of 32'},
+  // Jul 4
+  {utc:'2026-07-04T01:30:00Z',teams:'R32 M87: Group K Winner vs 3rd place',venue:'Arrowhead · Kansas City',stage:'knockout',badge:'Round of 32'},
+  {utc:'2026-07-04T17:00:00Z',teams:'R16 M90: M73 Winner vs M75 Winner',venue:'NRG Stadium · Houston',stage:'knockout',badge:'Round of 16'},
+  {utc:'2026-07-04T21:00:00Z',teams:'R16 M89: M74 Winner vs M77 Winner',venue:'Lincoln Financial · Philadelphia',stage:'knockout',badge:'Round of 16'},
+  // Jul 5
+  {utc:'2026-07-05T20:00:00Z',teams:'R16 M91: M76 Winner vs M78 Winner',venue:'MetLife Stadium · New Jersey',stage:'knockout',badge:'Round of 16'},
+  // Jul 6
+  {utc:'2026-07-06T00:00:00Z',teams:'R16 M92: M79 Winner vs M80 Winner',venue:'Estadio Azteca · Mexico City',stage:'knockout',badge:'Round of 16'},
+  {utc:'2026-07-06T19:00:00Z',teams:'R16 M93: M83 Winner vs M84 Winner',venue:'AT&T Stadium · Arlington',stage:'knockout',badge:'Round of 16'},
+  // Jul 7
+  {utc:'2026-07-07T00:00:00Z',teams:'R16 M94: M81 Winner vs M82 Winner',venue:'Lumen Field · Seattle',stage:'knockout',badge:'Round of 16'},
+  {utc:'2026-07-07T16:00:00Z',teams:'R16 M95: M86 Winner vs M88 Winner',venue:'Mercedes-Benz · Atlanta',stage:'knockout',badge:'Round of 16'},
+  {utc:'2026-07-07T20:00:00Z',teams:'R16 M96: M85 Winner vs M87 Winner',venue:'BC Place · Vancouver',stage:'knockout',badge:'Round of 16'},
+  // Jul 9
+  {utc:'2026-07-09T20:00:00Z',teams:'QF M97: M89 Winner vs M90 Winner',venue:'Gillette Stadium · Foxborough',stage:'knockout',badge:'Quarter-final'},
+  // Jul 10
+  {utc:'2026-07-10T19:00:00Z',teams:'QF M98: M93 Winner vs M94 Winner',venue:'SoFi Stadium · Los Angeles',stage:'knockout',badge:'Quarter-final'},
+  // Jul 11
+  {utc:'2026-07-11T21:00:00Z',teams:'QF M99: M91 Winner vs M92 Winner',venue:'Hard Rock Stadium · Miami',stage:'knockout',badge:'Quarter-final'},
+  // Jul 12
+  {utc:'2026-07-12T01:00:00Z',teams:'QF M100: M95 Winner vs M96 Winner',venue:'Arrowhead · Kansas City',stage:'knockout',badge:'Quarter-final'},
+  // Jul 14
+  {utc:'2026-07-14T19:00:00Z',teams:'SF M101: M97 Winner vs M98 Winner',venue:'AT&T Stadium · Arlington',stage:'knockout',badge:'Semi-final'},
+  // Jul 15
+  {utc:'2026-07-15T19:00:00Z',teams:'SF M102: M99 Winner vs M100 Winner',venue:'Mercedes-Benz · Atlanta',stage:'knockout',badge:'Semi-final'},
+  // Jul 18
+  {utc:'2026-07-18T21:00:00Z',teams:'🥉 Third Place Playoff',venue:'Hard Rock Stadium · Miami',stage:'knockout',badge:'3rd Place'},
+  // Jul 19
+  {utc:'2026-07-19T19:00:00Z',teams:'🏆 World Cup Final',venue:'MetLife Stadium · New Jersey',stage:'final',badge:'Final',isFinal:true},
+];
+
+function renderMatchList(){
+  const container=document.getElementById('match-list-auto');
+  if(!container)return;
+  container.innerHTML=MATCHES.map(m=>{
+    let dateHtml;
+    if(m.utc){
+      const d=new Date(m.utc);
+      const dateStr=d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+      const timeStr=d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});
+      dateHtml=`<strong>${dateStr}</strong>${timeStr}`;
+    } else {
+      dateHtml=`<strong>${m.label}</strong>TBD`;
+    }
+    const badgeStyle=m.isFinal?'style="border-color:rgba(240,192,64,0.3);color:var(--gold)"':'';
+    const itemClass=m.isFinal?'match-item final-match':'match-item';
+    const teamStyle=m.isFinal?'style="font-size:17px"':'';
+    return `<div class="${itemClass}" data-stage="${m.stage}"><div class="match-date">${dateHtml}</div><div><div class="match-teams-txt" ${teamStyle}>${m.teams}</div><div class="match-venue">${m.venue}</div></div><div class="match-stage-badge" ${badgeStyle}>${m.badge}</div></div>`;
+  }).join('');
 }
+
 function filterMatches(stage,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -1028,8 +1145,7 @@ async function createLeague(){
     const{error:leagueErr}=await sb.from('leagues').insert({name,code,created_by:email});
     if(leagueErr)throw leagueErr;
     await sb.from('league_members').insert({league_code:code,email,username});
-    await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
-    await addToBrevo(email, username);
+    await safeUpsertSubscriber(email, username);
     currentLeagueCode=code;
     document.getElementById('new-league-code').textContent=code;
     document.getElementById('create-form').style.display='none';
@@ -1058,8 +1174,7 @@ async function joinLeague(){
       if(joinErr.code==='23505'){errEl.textContent='You are already in this league!';errEl.className='league-error show';return}
       throw joinErr;
     }
-    await sb.from('subscribers').upsert({email,username,total_points:0},{onConflict:'email'});
-   await addToBrevo(email, username);
+    await safeUpsertSubscriber(email, username);
     localStorage.setItem('my_league_code',code);localStorage.setItem('my_league_email',email);
     sucEl.textContent=`✅ Joined "${leagues[0].name}"! Check "My League" tab.`;
     sucEl.className='league-success show';
@@ -1068,13 +1183,6 @@ async function joinLeague(){
     document.getElementById('join-username').value='';
     document.getElementById('join-email').value='';
   }catch(e){errEl.textContent='Error: '+e.message;errEl.className='league-error show'}
-}
- async function addToBrevo(email, username) {
-  await fetch('/api/add-contact', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, username })
-  });
 }
 async function loadMyLeague(){
   const email=document.getElementById('my-league-email').value.trim();
@@ -1118,6 +1226,7 @@ window.addEventListener('load',()=>{
   if(tab&&['home','ai','game','league','watch','schedule'].includes(tab)){
     showPage(tab);
   }
+  renderMatchList();
 });
 </script>
 
