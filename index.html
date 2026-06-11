@@ -471,17 +471,7 @@ footer p{margin-bottom:6px}
       <p class="section-desc">Guess the exact score. Up to 10 points per match. Must predict before kickoff.</p>
       <div class="game-wrap">
         <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Select an upcoming match:</div>
-        <select class="match-select" id="match-select" onchange="onMatchSelect()">
-          <option value="">-- Choose a match --</option>
-          <option value="MEX_RSA_jun11" data-t1="Mexico" data-f1="🇲🇽" data-t2="South Africa" data-f2="🇿🇦" data-kick="2026-06-11T20:00:00Z">Jun 11 · Mexico vs South Africa (3PM ET)</option>
-          <option value="USA_PAR_jun12" data-t1="USA" data-f1="🇺🇸" data-t2="Paraguay" data-f2="🇵🇾" data-kick="2026-06-13T02:00:00Z">Jun 12 · USA vs Paraguay (9PM ET)</option>
-          <option value="BRA_MAR_jun13" data-t1="Brazil" data-f1="🇧🇷" data-t2="Morocco" data-f2="🇲🇦" data-kick="2026-06-13T23:00:00Z">Jun 13 · Brazil vs Morocco (6PM ET)</option>
-          <option value="GER_CUR_jun14" data-t1="Germany" data-f1="🇩🇪" data-t2="Curacao" data-f2="🇨🇼" data-kick="2026-06-14T18:00:00Z">Jun 14 · Germany vs Curacao (1PM ET)</option>
-          <option value="ESP_CPV_jun15" data-t1="Spain" data-f1="🇪🇸" data-t2="Cape Verde" data-f2="🇨🇻" data-kick="2026-06-15T17:00:00Z">Jun 15 · Spain vs Cape Verde (12PM ET)</option>
-          <option value="FRA_SEN_jun16" data-t1="France" data-f1="🇫🇷" data-t2="Senegal" data-f2="🇸🇳" data-kick="2026-06-16T20:00:00Z">Jun 16 · France vs Senegal (3PM ET)</option>
-          <option value="ARG_ALG_jun16" data-t1="Argentina" data-f1="🇦🇷" data-t2="Algeria" data-f2="🇩🇿" data-kick="2026-06-17T02:00:00Z">Jun 16 · Argentina vs Algeria (9PM ET)</option>
-          <option value="ENG_CRO_jun17" data-t1="England" data-f1="🏴󠁧󠁢󠁥󠁮󠁧󠁿" data-t2="Croatia" data-f2="🇭🇷" data-kick="2026-06-17T21:00:00Z">Jun 17 · England vs Croatia (4PM ET)</option>
-        </select>
+        <select class="match-select" id="match-select" onchange="onMatchSelect()"><option value="">-- Choose a match --</option></select>
         <div id="game-match-display" style="display:none">
           <div class="countdown-wrap">
             <div class="countdown-label" id="countdown-label">Prediction closes in:</div>
@@ -863,6 +853,103 @@ function showGameShareCard(){
   document.getElementById('gsc-score2').textContent=gScore[1];
   document.getElementById('game-share-card').style.display='block';
 }
+function populateMatchSelect(){
+  const sel=document.getElementById('match-select');
+  if(!sel)return;
+  const now=new Date();
+  // All 72 group stage matches
+  const GROUP_MATCHES=[
+    {id:'MEX_RSA_jun11',t1:'Mexico',f1:'🇲🇽',t2:'South Africa',f2:'🇿🇦',utc:'2026-06-11T19:00:00Z'},
+    {id:'KOR_CZE_jun12',t1:'South Korea',f1:'🇰🇷',t2:'Czech Republic',f2:'🇨🇿',utc:'2026-06-12T02:00:00Z'},
+    {id:'CAN_BIH_jun12',t1:'Canada',f1:'🇨🇦',t2:'Bosnia & Herz.',f2:'🇧🇦',utc:'2026-06-12T19:00:00Z'},
+    {id:'USA_PAR_jun12',t1:'USA',f1:'🇺🇸',t2:'Paraguay',f2:'🇵🇾',utc:'2026-06-13T01:00:00Z'},
+    {id:'QAT_SUI_jun13',t1:'Qatar',f1:'🇶🇦',t2:'Switzerland',f2:'🇨🇭',utc:'2026-06-13T19:00:00Z'},
+    {id:'BRA_MAR_jun13',t1:'Brazil',f1:'🇧🇷',t2:'Morocco',f2:'🇲🇦',utc:'2026-06-13T22:00:00Z'},
+    {id:'HAI_SCO_jun14',t1:'Haiti',f1:'🇭🇹',t2:'Scotland',f2:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',utc:'2026-06-14T01:00:00Z'},
+    {id:'AUS_TUR_jun14',t1:'Australia',f1:'🇦🇺',t2:'Turkey',f2:'🇹🇷',utc:'2026-06-14T04:00:00Z'},
+    {id:'GER_CUR_jun14',t1:'Germany',f1:'🇩🇪',t2:'Curaçao',f2:'🇨🇼',utc:'2026-06-14T17:00:00Z'},
+    {id:'NED_JPN_jun14',t1:'Netherlands',f1:'🇳🇱',t2:'Japan',f2:'🇯🇵',utc:'2026-06-14T20:00:00Z'},
+    {id:'CIV_ECU_jun15',t1:'Ivory Coast',f1:'🇨🇮',t2:'Ecuador',f2:'🇪🇨',utc:'2026-06-14T23:00:00Z'},
+    {id:'TUN_SWE_jun15',t1:'Tunisia',f1:'🇹🇳',t2:'Sweden',f2:'🇸🇪',utc:'2026-06-15T02:00:00Z'},
+    {id:'ESP_CPV_jun15',t1:'Spain',f1:'🇪🇸',t2:'Cape Verde',f2:'🇨🇻',utc:'2026-06-15T16:00:00Z'},
+    {id:'BEL_EGY_jun15',t1:'Belgium',f1:'🇧🇪',t2:'Egypt',f2:'🇪🇬',utc:'2026-06-15T19:00:00Z'},
+    {id:'KSA_URU_jun15',t1:'Saudi Arabia',f1:'🇸🇦',t2:'Uruguay',f2:'🇺🇾',utc:'2026-06-15T22:00:00Z'},
+    {id:'IRN_NZL_jun16',t1:'Iran',f1:'🇮🇷',t2:'New Zealand',f2:'🇳🇿',utc:'2026-06-16T01:00:00Z'},
+    {id:'FRA_SEN_jun16',t1:'France',f1:'🇫🇷',t2:'Senegal',f2:'🇸🇳',utc:'2026-06-16T19:00:00Z'},
+    {id:'IRQ_NOR_jun16',t1:'Iraq',f1:'🇮🇶',t2:'Norway',f2:'🇳🇴',utc:'2026-06-16T22:00:00Z'},
+    {id:'ARG_ALG_jun17',t1:'Argentina',f1:'🇦🇷',t2:'Algeria',f2:'🇩🇿',utc:'2026-06-17T01:00:00Z'},
+    {id:'AUT_JOR_jun17',t1:'Austria',f1:'🇦🇹',t2:'Jordan',f2:'🇯🇴',utc:'2026-06-17T04:00:00Z'},
+    {id:'POR_COD_jun17',t1:'Portugal',f1:'🇵🇹',t2:'DR Congo',f2:'🇨🇩',utc:'2026-06-17T17:00:00Z'},
+    {id:'ENG_CRO_jun17',t1:'England',f1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',t2:'Croatia',f2:'🇭🇷',utc:'2026-06-17T20:00:00Z'},
+    {id:'GHA_PAN_jun18',t1:'Ghana',f1:'🇬🇭',t2:'Panama',f2:'🇵🇦',utc:'2026-06-17T23:00:00Z'},
+    {id:'UZB_COL_jun18',t1:'Uzbekistan',f1:'🇺🇿',t2:'Colombia',f2:'🇨🇴',utc:'2026-06-18T02:00:00Z'},
+    {id:'CZE_RSA_jun18',t1:'Czech Republic',f1:'🇨🇿',t2:'South Africa',f2:'🇿🇦',utc:'2026-06-18T16:00:00Z'},
+    {id:'SUI_BIH_jun18',t1:'Switzerland',f1:'🇨🇭',t2:'Bosnia & Herz.',f2:'🇧🇦',utc:'2026-06-18T19:00:00Z'},
+    {id:'CAN_QAT_jun18',t1:'Canada',f1:'🇨🇦',t2:'Qatar',f2:'🇶🇦',utc:'2026-06-18T22:00:00Z'},
+    {id:'MEX_KOR_jun19',t1:'Mexico',f1:'🇲🇽',t2:'South Korea',f2:'🇰🇷',utc:'2026-06-19T01:00:00Z'},
+    {id:'USA_AUS_jun19',t1:'USA',f1:'🇺🇸',t2:'Australia',f2:'🇦🇺',utc:'2026-06-19T19:00:00Z'},
+    {id:'SCO_MAR_jun19',t1:'Scotland',f1:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',t2:'Morocco',f2:'🇲🇦',utc:'2026-06-19T22:00:00Z'},
+    {id:'BRA_HAI_jun20',t1:'Brazil',f1:'🇧🇷',t2:'Haiti',f2:'🇭🇹',utc:'2026-06-20T00:30:00Z'},
+    {id:'TUR_PAR_jun20',t1:'Turkey',f1:'🇹🇷',t2:'Paraguay',f2:'🇵🇾',utc:'2026-06-20T03:00:00Z'},
+    {id:'NED_SWE_jun20',t1:'Netherlands',f1:'🇳🇱',t2:'Sweden',f2:'🇸🇪',utc:'2026-06-20T17:00:00Z'},
+    {id:'GER_CIV_jun20',t1:'Germany',f1:'🇩🇪',t2:'Ivory Coast',f2:'🇨🇮',utc:'2026-06-20T20:00:00Z'},
+    {id:'ECU_CUR_jun21',t1:'Ecuador',f1:'🇪🇨',t2:'Curaçao',f2:'🇨🇼',utc:'2026-06-21T00:00:00Z'},
+    {id:'TUN_JPN_jun21',t1:'Tunisia',f1:'🇹🇳',t2:'Japan',f2:'🇯🇵',utc:'2026-06-21T04:00:00Z'},
+    {id:'ESP_KSA_jun21',t1:'Spain',f1:'🇪🇸',t2:'Saudi Arabia',f2:'🇸🇦',utc:'2026-06-21T16:00:00Z'},
+    {id:'BEL_IRN_jun21',t1:'Belgium',f1:'🇧🇪',t2:'Iran',f2:'🇮🇷',utc:'2026-06-21T19:00:00Z'},
+    {id:'URU_CPV_jun21',t1:'Uruguay',f1:'🇺🇾',t2:'Cape Verde',f2:'🇨🇻',utc:'2026-06-21T22:00:00Z'},
+    {id:'NZL_EGY_jun22',t1:'New Zealand',f1:'🇳🇿',t2:'Egypt',f2:'🇪🇬',utc:'2026-06-22T01:00:00Z'},
+    {id:'ARG_AUT_jun22',t1:'Argentina',f1:'🇦🇷',t2:'Austria',f2:'🇦🇹',utc:'2026-06-22T17:00:00Z'},
+    {id:'FRA_IRQ_jun22',t1:'France',f1:'🇫🇷',t2:'Iraq',f2:'🇮🇶',utc:'2026-06-22T21:00:00Z'},
+    {id:'NOR_SEN_jun23',t1:'Norway',f1:'🇳🇴',t2:'Senegal',f2:'🇸🇳',utc:'2026-06-23T00:00:00Z'},
+    {id:'JOR_ALG_jun23',t1:'Jordan',f1:'🇯🇴',t2:'Algeria',f2:'🇩🇿',utc:'2026-06-23T03:00:00Z'},
+    {id:'POR_UZB_jun23',t1:'Portugal',f1:'🇵🇹',t2:'Uzbekistan',f2:'🇺🇿',utc:'2026-06-23T17:00:00Z'},
+    {id:'ENG_GHA_jun23',t1:'England',f1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',t2:'Ghana',f2:'🇬🇭',utc:'2026-06-23T20:00:00Z'},
+    {id:'PAN_CRO_jun24',t1:'Panama',f1:'🇵🇦',t2:'Croatia',f2:'🇭🇷',utc:'2026-06-23T23:00:00Z'},
+    {id:'COL_COD_jun24',t1:'Colombia',f1:'🇨🇴',t2:'DR Congo',f2:'🇨🇩',utc:'2026-06-24T02:00:00Z'},
+    {id:'SUI_CAN_jun24',t1:'Switzerland',f1:'🇨🇭',t2:'Canada',f2:'🇨🇦',utc:'2026-06-24T19:00:00Z'},
+    {id:'BIH_QAT_jun24',t1:'Bosnia & Herz.',f1:'🇧🇦',t2:'Qatar',f2:'🇶🇦',utc:'2026-06-24T19:00:00Z'},
+    {id:'MAR_HAI_jun24',t1:'Morocco',f1:'🇲🇦',t2:'Haiti',f2:'🇭🇹',utc:'2026-06-24T22:00:00Z'},
+    {id:'SCO_BRA_jun24',t1:'Scotland',f1:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',t2:'Brazil',f2:'🇧🇷',utc:'2026-06-24T22:00:00Z'},
+    {id:'RSA_KOR_jun25',t1:'South Africa',f1:'🇿🇦',t2:'South Korea',f2:'🇰🇷',utc:'2026-06-25T01:00:00Z'},
+    {id:'CZE_MEX_jun25',t1:'Czech Republic',f1:'🇨🇿',t2:'Mexico',f2:'🇲🇽',utc:'2026-06-25T01:00:00Z'},
+    {id:'CUR_CIV_jun25',t1:'Curaçao',f1:'🇨🇼',t2:'Ivory Coast',f2:'🇨🇮',utc:'2026-06-25T20:00:00Z'},
+    {id:'ECU_GER_jun25',t1:'Ecuador',f1:'🇪🇨',t2:'Germany',f2:'🇩🇪',utc:'2026-06-25T20:00:00Z'},
+    {id:'TUN_NED_jun26',t1:'Tunisia',f1:'🇹🇳',t2:'Netherlands',f2:'🇳🇱',utc:'2026-06-25T23:00:00Z'},
+    {id:'JPN_SWE_jun26',t1:'Japan',f1:'🇯🇵',t2:'Sweden',f2:'🇸🇪',utc:'2026-06-25T23:00:00Z'},
+    {id:'TUR_USA_jun26',t1:'Turkey',f1:'🇹🇷',t2:'USA',f2:'🇺🇸',utc:'2026-06-26T02:00:00Z'},
+    {id:'PAR_AUS_jun26',t1:'Paraguay',f1:'🇵🇾',t2:'Australia',f2:'🇦🇺',utc:'2026-06-26T02:00:00Z'},
+    {id:'NOR_FRA_jun26',t1:'Norway',f1:'🇳🇴',t2:'France',f2:'🇫🇷',utc:'2026-06-26T19:00:00Z'},
+    {id:'SEN_IRQ_jun26',t1:'Senegal',f1:'🇸🇳',t2:'Iraq',f2:'🇮🇶',utc:'2026-06-26T19:00:00Z'},
+    {id:'CPV_KSA_jun27',t1:'Cape Verde',f1:'🇨🇻',t2:'Saudi Arabia',f2:'🇸🇦',utc:'2026-06-27T00:00:00Z'},
+    {id:'URU_ESP_jun27',t1:'Uruguay',f1:'🇺🇾',t2:'Spain',f2:'🇪🇸',utc:'2026-06-27T00:00:00Z'},
+    {id:'NZL_BEL_jun27',t1:'New Zealand',f1:'🇳🇿',t2:'Belgium',f2:'🇧🇪',utc:'2026-06-27T03:00:00Z'},
+    {id:'EGY_IRN_jun27',t1:'Egypt',f1:'🇪🇬',t2:'Iran',f2:'🇮🇷',utc:'2026-06-27T03:00:00Z'},
+    {id:'PAN_ENG_jun27',t1:'Panama',f1:'🇵🇦',t2:'England',f2:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',utc:'2026-06-27T21:00:00Z'},
+    {id:'CRO_GHA_jun27',t1:'Croatia',f1:'🇭🇷',t2:'Ghana',f2:'🇬🇭',utc:'2026-06-27T21:00:00Z'},
+    {id:'COL_POR_jun28',t1:'Colombia',f1:'🇨🇴',t2:'Portugal',f2:'🇵🇹',utc:'2026-06-27T23:30:00Z'},
+    {id:'COD_UZB_jun28',t1:'DR Congo',f1:'🇨🇩',t2:'Uzbekistan',f2:'🇺🇿',utc:'2026-06-27T23:30:00Z'},
+    {id:'ALG_AUT_jun28',t1:'Algeria',f1:'🇩🇿',t2:'Austria',f2:'🇦🇹',utc:'2026-06-28T02:00:00Z'},
+    {id:'JOR_ARG_jun28',t1:'Jordan',f1:'🇯🇴',t2:'Argentina',f2:'🇦🇷',utc:'2026-06-28T02:00:00Z'},
+  ];
+  // Clear existing options except first
+  while(sel.options.length>1)sel.remove(1);
+  GROUP_MATCHES.forEach(m=>{
+    const d=new Date(m.utc);
+    const dateStr=d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+    const timeStr=d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});
+    const isPast=d<now;
+    const opt=document.createElement('option');
+    opt.value=m.id;
+    opt.dataset.t1=m.t1;opt.dataset.f1=m.f1;
+    opt.dataset.t2=m.t2;opt.dataset.f2=m.f2;
+    opt.dataset.kick=m.utc;
+    opt.textContent=`${isPast?'✓ ':''}${dateStr} · ${m.f1} ${m.t1} vs ${m.t2} ${m.f2} · ${timeStr}`;
+    if(isPast)opt.style.color='#555';
+    sel.appendChild(opt);
+  });
+}
+
 function onMatchSelect(){
   const sel=document.getElementById('match-select');
   const opt=sel.options[sel.selectedIndex];
@@ -1256,6 +1343,7 @@ async function fetchLiveScores(){
   }
 }
 
+  populateMatchSelect();
   fetchLiveScores();
   setInterval(fetchLiveScores,60000);
   renderMatchList();
