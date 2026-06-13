@@ -830,7 +830,16 @@ function copyPrediction(){
 function shareGameFacebook(){
   if(!gMatch)return;
   const shareUrl=`https://livewc26.com/api/share?t1=${encodeURIComponent(gMatch.t1)}&t2=${encodeURIComponent(gMatch.t2)}&s1=${gScore[0]}&s2=${gScore[1]}&f1=${encodeURIComponent(gMatch.f1)}&f2=${encodeURIComponent(gMatch.f2)}`;
-  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareUrl),'_blank','width=600,height=400');
+  const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(isMobile){
+    navigator.clipboard.writeText(shareUrl).then(()=>{
+      showToast('🔗 Link copied! Open Facebook → Create Post → Paste the link','success');
+    }).catch(()=>{
+      prompt('Copy this link and paste it in Facebook:',shareUrl);
+    });
+  } else {
+    window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareUrl),'_blank','width=600,height=400');
+  }
 }
 function shareGameWhatsApp(){
   if(!gMatch)return;
